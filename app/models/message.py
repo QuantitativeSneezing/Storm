@@ -14,12 +14,9 @@ class Message(db.Model):
     sender_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-
     user_m = db.relationship("User", back_populates="message_u")
-    # channel_m = db.relationship("Channel", back_populates="message_c")
-    # server_m = db.relationship("Server", back_populates="message_s")
+    friendship_m = db.relationship("Friendship", back_populates="message_f")
 
-    # stop case:
     def to_dict(self):
         dicted = {
             "username": "unknown",

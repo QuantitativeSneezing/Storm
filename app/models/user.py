@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from .user_cart_item import user_cart_item
 from .user_library_game import user_library_game
+from.friendship_friends import friendship_friends
 from flask_login import UserMixin
 
 
@@ -33,6 +34,11 @@ class User(db.Model, UserMixin):
         cascade="all, delete"
     )
 
+    user_friendship_friends = db.relationship(
+        "User",
+        secondary=friendship_friends,
+        back_populates="friendship_friendship_friends",
+    )
     @property
     def password(self):
         return self.hashed_password
