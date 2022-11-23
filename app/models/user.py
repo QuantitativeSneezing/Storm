@@ -23,14 +23,14 @@ class User(db.Model, UserMixin):
     user_user_cart_item = db.relationship(
         "Game",
         secondary=user_cart_item,
-        back_populates="server_server_members",
+        back_populates="game_user_cart_item",
         cascade="all, delete"
     )
 
     user_user_library_game = db.relationship(
         "Game",
         secondary=user_library_game,
-        back_populates="server_server_members",
+        back_populates="game_user_library_game",
         cascade="all, delete"
     )
 

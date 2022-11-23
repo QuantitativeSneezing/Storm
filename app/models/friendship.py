@@ -14,3 +14,16 @@ class Friendship(db.Model):
         secondary=friendship_friends,
         back_populates="user_friendship_friends",
     )
+    def to_dict_with_users(self):
+            friendship_dict = {
+                "id": self.id,
+                "messages": [message.to_dict() for message in self.message_f],
+                "friends" : [user.to_dict() for user in self.friendship_friendship_friends]
+            }
+            return friendship_dict
+    def to_dict(self):
+        friendship_dict = {
+            "id": self.id,
+            "messages": [message.to_dict() for message in self.message_f],
+        }
+        return friendship_dict
