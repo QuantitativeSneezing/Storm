@@ -16,11 +16,11 @@ class Game(db.Model):
     game_user_cart_item = db.relationship(
         "User",
         secondary=user_cart_item,
-        back_populates="user_user_cart_items",
+        back_populates="user_user_cart_item",
         cascade="all, delete"
     )
     game_user_library_game = db.relationship(
-        "Game",
+        "User",
         secondary=user_library_game,
         back_populates="user_user_library_game",
         cascade="all, delete"

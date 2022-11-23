@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
     )
 
     user_friendship_friends = db.relationship(
-        "User",
+        "Friendship",
         secondary=friendship_friends,
         back_populates="friendship_friendship_friends",
     )

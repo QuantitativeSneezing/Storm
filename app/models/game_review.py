@@ -18,7 +18,8 @@ class GameReview(db.Model):
             "id": self.id,
             "title": self.title,
             "content": self.content,
-            "rating": self.rating
+            "rating": self.rating,
+            "game_id": self.game_id
         }
         return game_dict
 
