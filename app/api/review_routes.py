@@ -21,8 +21,8 @@ def validation_errors_to_error_messages(validation_errors):
 @review_routes.route('/all')
 def all_reviews():
     all_reviews= GameReview.query.all()
-    return json.dumps({"reviews": [review.to_dict_with_users() for review in all_reviews]})
+    return json.dumps({"reviews": [review.to_dict() for review in all_reviews]})
 @review_routes.route('/<int:game_id>')
 def game_reviews(game_id):
-    all_reviews= GameReview.query.filter_by()
-    return json.dumps({"reviews": [review.to_dict_with_users() for review in all_reviews]})
+    all_reviews= GameReview.query.filter_by(game_id==game_id)
+    return json.dumps({"reviews": [review.to_dict() for review in all_reviews]})
