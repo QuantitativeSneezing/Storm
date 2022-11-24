@@ -30,7 +30,16 @@ class Game(db.Model):
             "id": self.id,
             "title": self.title,
             "description": self.description,
-            "price": self.price
+            "price": str(self.price)
+        }
+        return game_dict
+    def to_dict_images(self):
+        game_dict = {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "price": str(self.price),
+            "images": [image.to_dict() for image in self.photo_g],
         }
         return game_dict
 

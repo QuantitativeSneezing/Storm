@@ -9,9 +9,13 @@ class GameReview(db.Model):
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.String(255), nullable=False)
     rating = db.Column(db.Boolean)
+    reviewer_id= db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod('users.id')))
     game_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('games.id')))
     game_r= db.relationship("Game", back_populates= "review_g")
+    user_r = db.relationship(
+        "User", back_populates="review_u")
     # stop case:
     def to_dict(self):
         game_dict = {

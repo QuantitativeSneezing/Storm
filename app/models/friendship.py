@@ -6,6 +6,8 @@ class Friendship(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    nicknameOne= db.Column(db.String)
+    nicknameTwo= db.Column(db.String)
 
     message_f = db.relationship("Message", back_populates="friendship_m")
 
@@ -17,8 +19,11 @@ class Friendship(db.Model):
     def to_dict_with_users(self):
             friendship_dict = {
                 "id": self.id,
+                "nicknameOne" : self.nicknameOne,
+                "nicknameTwo" : self.nicknameTwo,
                 "messages": [message.to_dict() for message in self.message_f],
                 "friends" : [user.to_dict() for user in self.friendship_friendship_friends]
+
             }
             return friendship_dict
     def to_dict(self):

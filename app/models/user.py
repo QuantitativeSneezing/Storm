@@ -19,7 +19,8 @@ class User(db.Model, UserMixin):
 
     message_u = db.relationship(
         "Message", back_populates="user_m", cascade='all, delete')
-
+    review_u = db.relationship(
+        "GameReview", back_populates="user_r", cascade='all, delete')
     user_user_cart_item = db.relationship(
         "Game",
         secondary=user_cart_item,
@@ -55,4 +56,18 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email
+        }
+    def to_dict_with_games(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            "games": [game.to_dict() for game in self.user_user_library_game],
+        }
+    def to_dict_with_cart(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            "cart": [game.to_dict() for game in self.user_user_cart_item],
         }

@@ -27,5 +27,11 @@ def undo_games():
         db.session.execute(f"TRUNCATE table {SCHEMA}.games RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM games")
+        db.session.execute("DELETE FROM game_reviews")
+        db.session.execute("DELETE FROM user_cart_items")
+        db.session.execute("DELETE FROM user_library_games")
+
+
+
 
     db.session.commit()
