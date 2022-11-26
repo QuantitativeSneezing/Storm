@@ -4,4 +4,4 @@ from wtforms.validators import DataRequired, ValidationError
 from app.models import User
 class MessageForm(FlaskForm):
     content= StringField("Message", validators=[DataRequired()])
-    submit= SubmitField("CREATE")
+    # submit= SubmitField("CREATE")
