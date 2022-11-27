@@ -13,7 +13,12 @@ export const addMessage = (message) => {
         message
     };
 };
-
+export const updateMessage = (message) => {
+    return {
+        type: ADD_MESSAGE,
+        message
+    };
+};
 export const loadAll = (messages) => {
     return {
         type: LOAD_ALL,
@@ -44,23 +49,23 @@ export const deleteMessage = (id) => {
 export const getAllMessages = () => async dispatch => {
     const response = await fetch(`/api/messages/all`);
     if (response.ok) {
-      const messages = await response.json();
-      console.log("THUNK MESSAGES :", messages)
-      const result = dispatch(loadAll(messages.messages))
-      //console.log("RESULT OF DISPATCHING :", result)
-      return result
+        const messages = await response.json();
+        console.log("THUNK MESSAGES :", messages)
+        const result = dispatch(loadAll(messages.messages))
+        //console.log("RESULT OF DISPATCHING :", result)
+        return result
     }
-  };
+};
 
 
 
 export const addOneMessage = (data) => async dispatch => {
-    const { content } = data
+    const { content, friendshipId } = data
     // console.log('thunk!!!!!', name, img, description)
-    const response = await fetch(`/api/messages/new`, {
+    const response = await fetch(`/api/messages/new/${friendshipId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({content}),
+        body: JSON.stringify({ content }),
     })
     if (response.ok) {
         const newMessage = await response.json();
@@ -71,13 +76,13 @@ export const addOneMessage = (data) => async dispatch => {
 
 
 
-export const editOneMessage = (data) => async dispatch => {
-    const { messageId, name, img, description } = data;
-    console.log(messageId, name, img, description)
+export const editOneMessage = (payload) => async dispatch => {
+    const { messageId, content } = payload;
+    // console.log("STUFF IN EDIT :",messageId, content)
     const response = await fetch(`/api/messages/${messageId}`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, img, description }),
+        body: JSON.stringify({ content }),
     })
 
     if (response.ok) {
@@ -103,7 +108,8 @@ export const deleteOneMessage = (messageId) => async dispatch => {
 const messageReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
-        //separate loads for regular and dm messages
+        case LOAD_ALL:
+            return { ...state, ...newState, messages: [...action.messages] };
         case ADD_MESSAGE:
             // if there is a message already, skip this and go straight to overwriting it
             if (!state[action.message.id]) {

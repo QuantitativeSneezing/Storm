@@ -72,6 +72,4 @@ def remove_friend(friendship_id):
     friends = Friendship.query.get(friendship_id)
     db.session.delete(friends)
     db.session.commit()
-    # db.session.commit()
     return json.dumps("successfully deleted")
-# TODO: add form for updating nicknames
