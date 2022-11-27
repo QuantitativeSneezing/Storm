@@ -3,10 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session'
 import gameReducer from './game';
 import cartReducer from './cart';
+import messageReducer from './message';
+import friendReducer from './friend';
 const rootReducer = combineReducers({
   session,
   game: gameReducer,
   cart : cartReducer,
+  message : messageReducer,
+  friend: friendReducer,
 });
 
 

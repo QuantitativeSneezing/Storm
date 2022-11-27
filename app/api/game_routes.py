@@ -19,6 +19,10 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
+@game_routes.route('/<int:game_id>')
+def one_game(game_id):
+    game= Game.query.get(game_id)
+    return json.dumps({"game": game.to_dict_images()})
 @game_routes.route('/all')
 def all_games():
     all_games= Game.query.all()
