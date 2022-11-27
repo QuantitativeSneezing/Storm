@@ -1,6 +1,6 @@
 const ADD_CART = 'cart/add'
 const CHECKOUT = "cart/checkout"
-const REMOVE_CART = "card/remove"
+const REMOVE_CART = "cart/remove"
 const GET_CART = 'cart/get'
 export const addCart = (game) => {
     return {
@@ -60,14 +60,14 @@ export const checkoutCart = () => async dispatch=>{
     }
 }
 export const removeFromCart = (gameId) => async dispatch=>{
-    const response = await fetch(`/api/cart/${gameId}`, {
+    const response = await fetch(`/api/games/cart/${gameId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({gameId}),
     })
     if (response.ok) {
-        const checkout = await response.json();
-        const done = dispatch(checkout(response))
+        const finished = await response.json();
+        const done = dispatch(removeCart(gameId))
         return done
     }
 }
@@ -76,7 +76,9 @@ const cartReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case GET_CART:
-            return { ...state, ...newState, cart: [...action.games] };
+            console.log("ACTION IN GET CART :", action)
+            // return {...state}
+            return { ...state, ...newState, cart: [...action.games.cart] };
         case ADD_CART:
             // First case should technically never happen but I like these to be consistent
             if (!state[action.game.id]) {
@@ -98,8 +100,17 @@ const cartReducer = (state = {}, action) => {
             newState = { ...state, cart: emptyCart }
             return newState
         case REMOVE_CART:
-            const newCart = state.cart.filter(game => game.id === action.gameId)
+
+            // for (let i=0;i<state.cart.length;i++){
+            //     console.log("IN CART ???? :", state.cart[i].id==action.id, state.cart[i])
+            // }
+            const newCart = state.cart.filter(game => game.id !== action.id)
             newState = { ...state, cart: newCart }
+            console.log("NEW CART IN DELETE THUNK :",newCart )
+            console.log("CART IN DELETE THUNK :",action)
+            console.log("STATE IN DELETE THUNK :", state)
+            console.log ("NEW STATE :", newState)
+            // newState= {...state}
             return newState;
         default:
             return state;

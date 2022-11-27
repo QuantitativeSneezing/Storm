@@ -26,7 +26,7 @@ def one_game(game_id):
 @game_routes.route('/all')
 def all_games():
     all_games= Game.query.all()
-    return json.dumps({"games": [game.to_dict_images() for game in all_games]})
+    return json.dumps({"games": [game.to_dict_all() for game in all_games]})
 @game_routes.route('/library')
 @login_required
 def library_games():

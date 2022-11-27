@@ -1,5 +1,5 @@
 const ADD_MESSAGE = 'messages/addMessage'
-const LOAD_ONE = "messages/:messageId"
+// const LOAD_ONE = "messages/:messageId"
 const LOAD_ALL = 'messages/all'
 // const CURRENT_DM = "messages/current/dm"
 // const CURRENT = "messages/current"

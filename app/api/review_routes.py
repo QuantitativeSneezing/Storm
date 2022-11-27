@@ -34,11 +34,11 @@ def game_reviews(game_id):
 def add_review(game_id):
     form = ReviewForm()
     data = form.data
-    # sender_id = current_user.id
+    username= current_user.username
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_review = GameReview(content=data["content"], rating=data["rating"],
-                            game_id=game_id, sender_id=current_user.id)
+                            game_id=game_id, reviewer_id=current_user.id, title=username)
         db.session.add(new_review)
         db.session.commit()
         return json.dumps(new_review.to_dict())

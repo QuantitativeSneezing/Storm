@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import HomePage from './components/HomePage';
 import GameDetailPage from './components/gameDetailPage';
+import CartPage from './components/cartPage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -45,10 +46,13 @@ function App() {
           <HomePage />
         </Route>
         <Route path="/app/:gameId" exact={true}>
-       <GameDetailPage />
+          <GameDetailPage />
         </Route>
         <ProtectedRoute path="/library" exact={true}>
           <div>ADD LIBRARY COMPONENT HERE</div>
+        </ProtectedRoute>
+        <ProtectedRoute path="/cart" exact={true}>
+          <CartPage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

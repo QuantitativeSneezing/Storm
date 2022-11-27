@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .games import seed_games, undo_games
 from .friendships import seed_friendships, undo_friendships
 from .game_photos import seed_game_photos, undo_game_photos
+from .reviews import seed_game_reviews, undo_game_reviews
 from app.models.db import db, environment, SCHEMA
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -20,11 +21,13 @@ def seed():
         undo_friendships()
         undo_users()
         undo_game_photos()
+        undo_game_reviews()
         undo_games()
     seed_users()
     seed_games()
     seed_friendships()
     seed_game_photos()
+    seed_game_reviews()
     # Add other seed functions here
 
 
@@ -34,5 +37,6 @@ def undo():
     undo_friendships()
     undo_users()
     undo_game_photos()
+    seed_game_reviews()
     undo_games()
     # Add other undo functions here
