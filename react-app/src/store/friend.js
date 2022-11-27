@@ -49,7 +49,7 @@ export const newFriend = (friendId) => async dispatch => {
 }
 export const updateFriend = (payload) => async dispatch => {
     const {nicknameOne, nicknameTwo, friendshipId}= payload
-    const response = await fetch(`/api/friends/${friendId}`, {
+    const response = await fetch(`/api/friends/${friendshipId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nicknameOne, nicknameTwo }),
@@ -68,8 +68,10 @@ export const deleteFriend = (friendshipId) => async dispatch => {
     })
     if (response.ok) {
         const editedFriendship = await response.json();
+        if (editedFriendship){
         const done = dispatch(removeFriend(friendshipId))
         return done
+        }
     }
 }
 const friendReducer = (state = {}, action) => {

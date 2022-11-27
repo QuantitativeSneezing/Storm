@@ -7,7 +7,7 @@ import messageReducer from './message';
 import friendReducer from './friend';
 const rootReducer = combineReducers({
   session,
-  game: gameReducer,
+  games: gameReducer,
   cart : cartReducer,
   message : messageReducer,
   friend: friendReducer,

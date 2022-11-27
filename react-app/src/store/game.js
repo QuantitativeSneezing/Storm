@@ -60,10 +60,10 @@ const gameReducer = (state = {}, action) => {
         case LOAD_ONE:
             newState = { ...state, [action.game.id]: action.game }
             return newState
-        case DELETE_GAME:
-            const newGames = state.games.filter(game => game.id === action.gameId)
-            newState = { ...state, games: newGames }
-            return newState;
+        // case DELETE_GAME:
+        //     const newGames = state.games.filter(game => game.id === action.gameId)
+        //     newState = { ...state, games: newGames }
+        //     return newState;
         default:
             return state;
     }
