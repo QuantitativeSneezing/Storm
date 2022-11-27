@@ -99,7 +99,7 @@ const cartReducer = (state = {}, action) => {
                 ...state,
             };
         case CHECKOUT:
-            const emptyCart= {}
+            const emptyCart= []
             newState = { ...state, cart: emptyCart }
             return newState
         case REMOVE_CART:

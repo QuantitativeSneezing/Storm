@@ -19,7 +19,7 @@ function GameDetailPage() {
     const cart= useSelector(state=> state.cart.cart)
     const user = useSelector(state => state.session.user)
     let notInCartAlready;
-    let ownedByUser;
+    let ownedByUser= false;
     // console.log("USE SELECTORS :",user, cart)
 
     let currentGame;
@@ -35,7 +35,10 @@ function GameDetailPage() {
         if(user){
             // console.log("USER'S GAMES :", user.games)
             const gameInLibrary= user.games.find(game=>game.id===+gameId)
-            console.log("IN LIBRARY ?:",gameInLibrary)
+            // console.log("IN LIBRARY ?:",gameInLibrary)
+            if(gameInLibrary){
+                ownedByUser= true
+            }
         }
     }
 
@@ -61,11 +64,11 @@ function GameDetailPage() {
                             <img src={currentGame.images[0].url} alt="I lifted these all from steam lol"></img>
                         </div>
                         <div className="game-price">{currentGame.price}</div>
-                        {user && notInCartAlready &&
+                        {user && notInCartAlready && !ownedByUser &&
                             <div className="cart-button" onClick={addGameToCart}>ADD TO CART?</div>
                         }
-                        {user && !notInCartAlready &&
-                            <div className="cart-button" onClick={alreadyInCart}>THIS GAME IS ALREADY IN YOUR CART, CHECKOUT?</div>
+                        {user && !notInCartAlready && !ownedByUser &&
+                            <div className="cart-button" onClick={alreadyInCart}>THIS GAME IS ALREADY IN YOUR CART, GO TO CART?</div>
                         }
                         <div className="game-review-area">
                             <div>
