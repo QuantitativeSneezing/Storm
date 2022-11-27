@@ -54,8 +54,8 @@ export const checkoutCart = () => async dispatch=>{
         body: JSON.stringify("ADDING"),
     })
     if (response.ok) {
-        const checkout = await response.json();
-        const done = dispatch(checkout(response))
+        const results = await response.json();
+        const done = dispatch(checkout(results))
         return done
     }
 }
@@ -106,10 +106,10 @@ const cartReducer = (state = {}, action) => {
             // }
             const newCart = state.cart.filter(game => game.id !== action.id)
             newState = { ...state, cart: newCart }
-            console.log("NEW CART IN DELETE THUNK :",newCart )
-            console.log("CART IN DELETE THUNK :",action)
-            console.log("STATE IN DELETE THUNK :", state)
-            console.log ("NEW STATE :", newState)
+            // console.log("NEW CART IN DELETE THUNK :",newCart )
+            // console.log("CART IN DELETE THUNK :",action)
+            // console.log("STATE IN DELETE THUNK :", state)
+            // console.log ("NEW STATE :", newState)
             // newState= {...state}
             return newState;
         default:

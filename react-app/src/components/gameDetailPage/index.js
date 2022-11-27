@@ -3,27 +3,45 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneGame } from "../../store/game";
 import ReviewList from "../reviewList"
-import { addToCart } from "../../store/cart";
+import { addToCart, retrieveCart     } from "../../store/cart";
 function GameDetailPage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { gameId } = useParams();
     useEffect(() => {
         dispatch(getOneGame(gameId))
+        dispatch(retrieveCart())
     }, [dispatch, gameId])
+
     const stateGames = useSelector(state => state.games)
+
+    const cart= useSelector(state=> state.cart.cart)
     const user = useSelector(state => state.session.user)
-    console.log(user)
+    let notInCartAlready;
+    console.log("USE SELECTORS :",user, cart)
     let currentGame;
     if (stateGames) {
         currentGame = stateGames[gameId]
+        if (cart){
+            const gameFromCart= cart.find(game=>game.id===+gameId)
+            console.log("IN THE CART ? :", gameFromCart)
+            if (!gameFromCart){
+                notInCartAlready= true
+            }
+        }
     }
+
     console.log("GAME IN GAME DETAILS", currentGame)
     function addGameToCart() {
         const added = dispatch(addToCart(currentGame.id))
         console.log(added)
-        history.push('/')
+        history.push('/cart')
     }
+
+    function alreadyInCart() {
+        history.push('/cart')
+    }
+
     return (
         <div className="game-detail-container">
 
@@ -35,8 +53,11 @@ function GameDetailPage() {
                             <img src={currentGame.images[0].url} alt="I lifted these all from steam lol"></img>
                         </div>
                         <div className="game-price">{currentGame.price}</div>
-                        {user &&
+                        {user && notInCartAlready &&
                             <div className="cart-button" onClick={addGameToCart}>ADD TO CART?</div>
+                        }
+                        {user && !notInCartAlready &&
+                            <div className="cart-button" onClick={alreadyInCart}>THIS GAME IS ALREADY IN YOUR CART, CHECKOUT?</div>
                         }
                         <div className="game-review-area">
                             <div>
