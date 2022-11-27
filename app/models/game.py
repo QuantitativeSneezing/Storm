@@ -7,7 +7,7 @@ class Game(db.Model):
             __table_args__ = {'schema': SCHEMA}
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Numeric(precision=10, scale=2), nullable=False)
     # user_g = db.relationship(
     #     "User", back_populates="game_u")
