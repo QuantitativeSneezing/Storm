@@ -36,6 +36,9 @@ def seed_game_photos():
     eleventh= GamePhoto(game_id=11,
         url="https://cdn.akamai.steamstatic.com/steam/apps/597220/header.jpg?t=1596843390",
         is_main= True)
+    twelfth= GamePhoto(game_id=12,
+        url= "https://cdn.akamai.steamstatic.com/steam/apps/212680/header.jpg?t=1667027825",
+        is_main= True)
     db.session.add(first)
     db.session.add(second)
     db.session.add(third)
@@ -47,6 +50,7 @@ def seed_game_photos():
     db.session.add(ninth)
     db.session.add(tenth)
     db.session.add(eleventh)
+    db.session.add(twelfth)
     db.session.commit()
 
 

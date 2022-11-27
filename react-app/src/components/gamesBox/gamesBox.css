@@ -1,6 +1,6 @@
 .game-box{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .game-map{
     border: 1px solid green

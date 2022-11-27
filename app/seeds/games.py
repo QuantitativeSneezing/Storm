@@ -35,6 +35,9 @@ def seed_games():
     eleventh= Game(title= "West of Loathing",
         description= "West of Loathing — a slapstick comedy stick-figure wild west adventure role-playing game.",
         price=  10.99)
+    twelfth= Game(title= "FTL: Faster Than Light",
+        description= '''This "spaceship simulation roguelike-like" allows you to take your ship and crew on an adventure through a randomly generated galaxy filled with glory and bitter defeat.''',
+        price=9.99)
     db.session.add(first)
     db.session.add(second)
     db.session.add(third)
@@ -46,6 +49,7 @@ def seed_games():
     db.session.add(ninth)
     db.session.add(tenth)
     db.session.add(eleventh)
+    db.session.add(twelfth)
     db.session.commit()
 
 

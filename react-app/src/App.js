@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import HomePage from './components/HomePage';
+import GameDetailPage from './components/gameDetailPage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -44,8 +45,7 @@ function App() {
           <HomePage />
         </Route>
         <Route path="/app/:gameId" exact={true}>
-          <div>THIS IS GAME DETAILS</div>
-          {/* <video src="https://cdn.akamai.steamstatic.com/steam/apps/256910182/movie480_vp9.webm"></video> */}
+       <GameDetailPage />
         </Route>
         <ProtectedRoute path="/library" exact={true}>
           <div>ADD LIBRARY COMPONENT HERE</div>

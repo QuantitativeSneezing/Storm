@@ -42,6 +42,16 @@ class Game(db.Model):
             "images": [image.to_dict() for image in self.photo_g],
         }
         return game_dict
+    def to_dict_all(self):
+         game_dict = {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "price": str(self.price),
+            "images": [image.to_dict() for image in self.photo_g],
+            "reviews": [review.to_dict() for review in self.review_g]
+            }
+         return game_dict
 
     def __repr__(self):
         return f'<Channel model: id={self.id}, title={self.price}, description={self.description}, price={self.price}>'

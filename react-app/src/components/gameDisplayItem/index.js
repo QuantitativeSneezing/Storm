@@ -11,11 +11,9 @@ function GameDisplayItem(game) {
     // console.log("splash :", splashPhoto)
     return (
         <div className="game-container" >
-            <div className=""></div>
             <img src={splashPhoto} className= "game-store-picture" onClick={storePageRedirect}></img>
             <div className="game-price">
                 {game.price}
-
             </div>
         </div>
     )
