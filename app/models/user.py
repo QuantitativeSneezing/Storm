@@ -71,3 +71,11 @@ class User(db.Model, UserMixin):
             'email': self.email,
             "cart": [game.to_dict() for game in self.user_user_cart_item],
         }
+    def to_dict_with_all(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            "games": [game.to_dict() for game in self.user_user_library_game],
+            "cart": [game.to_dict() for game in self.user_user_cart_item],
+        }

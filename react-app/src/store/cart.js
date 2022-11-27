@@ -67,6 +67,9 @@ export const removeFromCart = (gameId) => async dispatch=>{
     })
     if (response.ok) {
         const finished = await response.json();
+        if(!finished){
+            return
+        }
         const done = dispatch(removeCart(gameId))
         return done
     }

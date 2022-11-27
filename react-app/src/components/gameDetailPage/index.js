@@ -8,9 +8,10 @@ function GameDetailPage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { gameId } = useParams();
+
     useEffect(() => {
-        dispatch(getOneGame(gameId))
         dispatch(retrieveCart())
+        dispatch(getOneGame(gameId))
     }, [dispatch, gameId])
 
     const stateGames = useSelector(state => state.games)
@@ -18,16 +19,23 @@ function GameDetailPage() {
     const cart= useSelector(state=> state.cart.cart)
     const user = useSelector(state => state.session.user)
     let notInCartAlready;
-    console.log("USE SELECTORS :",user, cart)
+    let ownedByUser;
+    // console.log("USE SELECTORS :",user, cart)
+
     let currentGame;
     if (stateGames) {
         currentGame = stateGames[gameId]
         if (cart){
             const gameFromCart= cart.find(game=>game.id===+gameId)
-            console.log("IN THE CART ? :", gameFromCart)
+            // console.log("IN THE CART ? :", gameFromCart)
             if (!gameFromCart){
                 notInCartAlready= true
             }
+        }
+        if(user){
+            // console.log("USER'S GAMES :", user.games)
+            const gameInLibrary= user.games.find(game=>game.id===+gameId)
+            console.log("IN LIBRARY ?:",gameInLibrary)
         }
     }
 
@@ -63,7 +71,7 @@ function GameDetailPage() {
                             <div>
                                 REVIEWS FOR THIS GAME:
                             </div>
-                            <ReviewList reviews={currentGame.reviews} />
+                            <ReviewList reviews={currentGame.reviews} owned={ownedByUser}/>
                         </div>
                     </div>
                 )
