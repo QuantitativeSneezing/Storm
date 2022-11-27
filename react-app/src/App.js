@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -35,7 +35,7 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -43,6 +43,13 @@ function App() {
         <Route path='/' exact={true} >
           <HomePage />
         </Route>
+        <Route path="/app/:gameId" exact={true}>
+          <div>THIS IS GAME DETAILS</div>
+          {/* <video src="https://cdn.akamai.steamstatic.com/steam/apps/256910182/movie480_vp9.webm"></video> */}
+        </Route>
+        <ProtectedRoute path="/library" exact={true}>
+          <div>ADD LIBRARY COMPONENT HERE</div>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

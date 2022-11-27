@@ -1,13 +1,15 @@
 import GameDisplayItem from "../gameDisplayItem"
 import "./gamesBox.css"
 function GamesBox(games) {
-    console.log ("GAMES IN GAMESBOX: ", games)
-    games= games.games
+    console.log("GAMES IN GAMESBOX: ", games)
+    games = games.games
     return (
         <div className="game-box">
-            { games &&
+            {games &&
                 games.map((game) =>
-                    <GameDisplayItem game={game}></GameDisplayItem>
+                    <div className="game-map">
+                        <GameDisplayItem game={game}></GameDisplayItem>
+                    </div>
                 )}
         </div>
     )
