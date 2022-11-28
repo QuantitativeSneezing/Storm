@@ -11,7 +11,7 @@ from .api.friendship_routes import friendship_routes
 from .api.review_routes import review_routes
 from .api.message_routes import message_routes
 from .api.game_routes import game_routes
-from .socket import socketio
+# from .socket import socketio
 from .seeds import seed_commands
 from .config import Config
 
@@ -41,7 +41,7 @@ app.register_blueprint(game_routes, url_prefix='/api/games')
 
 db.init_app(app)
 Migrate(app, db)
-socketio.init_app(app)
+# socketio.init_app(app)
 # Application Security
 CORS(app)
 
@@ -85,8 +85,8 @@ def api_help():
                   for rule in app.url_map.iter_rules() if rule.endpoint != 'static'}
     return route_list
 
-if __name__ == '__main__':
-    socketio.run(app)
+# if __name__ == '__main__':
+#     socketio.run(app)
 
 
 @app.route('/', defaults={'path': ''})
