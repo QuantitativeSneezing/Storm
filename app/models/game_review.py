@@ -7,21 +7,26 @@ class GameReview(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
+    #title is actual username of user
     content = db.Column(db.String(255), nullable=False)
     rating = db.Column(db.Boolean)
+    reviewer_id= db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod('users.id')))
     game_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('games.id')))
     game_r= db.relationship("Game", back_populates= "review_g")
+    user_r = db.relationship(
+        "User", back_populates="review_u")
     # stop case:
     def to_dict(self):
-        game_dict = {
+        game_review_dict = {
             "id": self.id,
             "title": self.title,
             "content": self.content,
             "rating": self.rating,
             "game_id": self.game_id
         }
-        return game_dict
+        return game_review_dict
 
     def __repr__(self):
         return f'<Channel model: id={self.id}, title={self.price}, description={self.description}, price={self.price}>'

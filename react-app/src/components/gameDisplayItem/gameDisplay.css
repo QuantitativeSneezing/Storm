@@ -1,0 +1,20 @@
+.game-store-picture{
+    flex-grow: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    box-shadow: 2px 2px 4px #0e0a0a;
+    max-width: 100%;
+    transition: all 250ms ease-in;
+
+}
+.game-store-picture:hover{
+    flex-grow: 1;
+    transform: scale(1.05);
+
+}
+.game-container{
+    padding: 10px;
+    border: 1px solid purple;
+    display: flex;
+}

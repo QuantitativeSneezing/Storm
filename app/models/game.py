@@ -7,7 +7,7 @@ class Game(db.Model):
             __table_args__ = {'schema': SCHEMA}
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Numeric(precision=10, scale=2), nullable=False)
     # user_g = db.relationship(
     #     "User", back_populates="game_u")
@@ -30,9 +30,28 @@ class Game(db.Model):
             "id": self.id,
             "title": self.title,
             "description": self.description,
-            "price": self.price
+            "price": str(self.price)
         }
         return game_dict
+    def to_dict_images(self):
+        game_dict = {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "price": str(self.price),
+            "images": [image.to_dict() for image in self.photo_g],
+        }
+        return game_dict
+    def to_dict_all(self):
+         game_dict = {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "price": str(self.price),
+            "images": [image.to_dict() for image in self.photo_g],
+            "reviews": [review.to_dict() for review in self.review_g]
+            }
+         return game_dict
 
     def __repr__(self):
         return f'<Channel model: id={self.id}, title={self.price}, description={self.description}, price={self.price}>'

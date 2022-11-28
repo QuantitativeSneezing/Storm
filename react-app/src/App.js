@@ -8,13 +8,15 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-
+import HomePage from './components/HomePage';
+import GameDetailPage from './components/gameDetailPage';
+import CartPage from './components/cartPage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -35,14 +37,23 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <HomePage />
         </Route>
+        <Route path="/app/:gameId" exact={true}>
+          <GameDetailPage />
+        </Route>
+        <ProtectedRoute path="/library" exact={true}>
+          <div>ADD LIBRARY COMPONENT HERE</div>
+        </ProtectedRoute>
+        <ProtectedRoute path="/cart" exact={true}>
+          <CartPage />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
