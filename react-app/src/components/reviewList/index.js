@@ -12,7 +12,6 @@ function ReviewList(props) {
                     <div className="review-user">{review.title}</div>
                     <div className="recommendation">{review.rating ? "RECOMMENDED" : "NOT RECOMMENDED"}</div>
                     <div className="review-content">{review.content}</div>
-
                 </div>)}
         </div>
     )
