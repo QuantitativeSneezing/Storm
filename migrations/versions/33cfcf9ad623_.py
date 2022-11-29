@@ -1,13 +1,15 @@
 """empty message
 
 Revision ID: 33cfcf9ad623
-Revises: 
+Revises:
 Create Date: 2022-11-27 00:10:02.837364
 
 """
 from alembic import op
 import sqlalchemy as sa
-
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = '33cfcf9ad623'
@@ -24,6 +26,8 @@ def upgrade():
     sa.Column('nicknameTwo', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE friendships SET SCHEMA {SCHEMA};")
     op.create_table('games',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=False),
@@ -31,6 +35,8 @@ def upgrade():
     sa.Column('price', sa.Numeric(precision=10, scale=2), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
@@ -40,6 +46,8 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('friendship_friends',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('friendship_id', sa.Integer(), nullable=False),
@@ -47,6 +55,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('user_id', 'friendship_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE friendship_friends SET SCHEMA {SCHEMA};")
     op.create_table('game_photos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('url', sa.String(length=255), nullable=False),
@@ -55,6 +65,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['game_id'], ['games.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE game_photos SET SCHEMA {SCHEMA};")
     op.create_table('game_reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=False),
@@ -66,6 +78,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['reviewer_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE game_reviews SET SCHEMA {SCHEMA};")
     op.create_table('messages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=255), nullable=False),
@@ -76,6 +90,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE messages SET SCHEMA {SCHEMA};")
     op.create_table('user_cart_items',
     sa.Column('users_id', sa.Integer(), nullable=False),
     sa.Column('games_id', sa.Integer(), nullable=False),
@@ -83,6 +99,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['users_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('users_id', 'games_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE user_cart_items SET SCHEMA {SCHEMA};")
     op.create_table('user_library_games',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('game_id', sa.Integer(), nullable=False),
@@ -90,6 +108,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('user_id', 'game_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE user_library_games SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

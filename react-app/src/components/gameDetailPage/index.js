@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneGame } from "../../store/game";
 import ReviewList from "../reviewList"
-import { addToCart, retrieveCart     } from "../../store/cart";
+import { addToCart, retrieveCart } from "../../store/cart";
 function GameDetailPage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -16,37 +16,37 @@ function GameDetailPage() {
 
     const stateGames = useSelector(state => state.games)
 
-    const cart= useSelector(state=> state.cart.cart)
+    const cart = useSelector(state => state.cart.cart)
     const user = useSelector(state => state.session.user)
     let notInCartAlready;
-    let ownedByUser= false;
+    let ownedByUser = false;
     // console.log("USE SELECTORS :",user, cart)
 
     let currentGame;
     if (stateGames) {
         currentGame = stateGames[gameId]
-        if (cart){
-            const gameFromCart= cart.find(game=>game.id===+gameId)
+        if (cart) {
+            const gameFromCart = cart.find(game => game.id === +gameId)
             // console.log("IN THE CART ? :", gameFromCart)
-            if (!gameFromCart){
-                notInCartAlready= true
+            if (!gameFromCart) {
+                notInCartAlready = true
             }
         }
-        if(user){
+        if (user) {
             // console.log("USER'S GAMES :", user.games)
-            const gameInLibrary= user.games.find(game=>game.id===+gameId)
+            const gameInLibrary = user.games.find(game => game.id === +gameId)
             // console.log("IN LIBRARY ?:",gameInLibrary)
-            if(gameInLibrary){
-                ownedByUser= true
+            if (gameInLibrary) {
+                ownedByUser = true
             }
         }
     }
 
     console.log("GAME IN GAME DETAILS", currentGame)
     function addGameToCart() {
-        const added = dispatch(addToCart(currentGame.id))
-        console.log(added)
-        history.push('/cart')
+        console.log("GAME TO BE ADDED :", currentGame)
+        dispatch(addToCart(currentGame.id))
+        history.push('/')
     }
 
     function alreadyInCart() {
@@ -74,7 +74,7 @@ function GameDetailPage() {
                             <div>
                                 REVIEWS FOR THIS GAME:
                             </div>
-                            <ReviewList reviews={currentGame.reviews} owned={ownedByUser}/>
+                            <ReviewList reviews={currentGame.reviews} owned={ownedByUser} />
                         </div>
                     </div>
                 )
