@@ -36,6 +36,7 @@ export const retrieveCart= () => async dispatch =>{
     }
 }
 export const addToCart = (id) => async dispatch=>{
+    console.log ("ID IN ADD TO CART THUNK :", id)
     const response = await fetch(`/api/games/cart/${id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
