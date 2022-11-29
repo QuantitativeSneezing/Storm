@@ -49,7 +49,7 @@ function GameDetailPage() {
         // console.log("GAME TO BE ADDED :", currentGame)
         dispatch(addToCart(currentGame.id))
         dispatch(authenticate())
-        history.push('/cart')
+        history.push('/')
     }
 
     function alreadyInCart() {

@@ -16,7 +16,7 @@ function HomePage() {
             <div> HELLO THIS IS THE HOMEPAGE</div>
             {
                 gamesLoaded &&
-                <GamesBox games = {games} />
+                <GamesBox games = {games} owned={false}/>
             }
         </div>
     )

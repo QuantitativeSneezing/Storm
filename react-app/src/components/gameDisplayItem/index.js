@@ -4,7 +4,7 @@ function GameDisplayItem(props) {
     const history = useHistory()
     const {game, inLibrary}= props
     function storePageRedirect() {
-        if(inLibrary){
+        if(!inLibrary){
             history.push(`/app/${game.id}`)
         }
     }

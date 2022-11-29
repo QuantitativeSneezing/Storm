@@ -5,12 +5,14 @@ import gameReducer from './game';
 import cartReducer from './cart';
 import messageReducer from './message';
 import friendReducer from './friend';
+import reviewReducer from './review';
 const rootReducer = combineReducers({
   session,
   games: gameReducer,
   cart : cartReducer,
   message : messageReducer,
   friend: friendReducer,
+  review: reviewReducer,
 });
 
 

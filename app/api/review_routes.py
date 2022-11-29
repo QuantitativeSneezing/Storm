@@ -36,6 +36,7 @@ def add_review(game_id):
     data = form.data
     username= current_user.username
     form['csrf_token'].data = request.cookies['csrf_token']
+    # print("DATA TO SEE ",data)
     if form.validate_on_submit():
         new_review = GameReview(content=data["content"], rating=data["rating"],
                             game_id=game_id, reviewer_id=current_user.id, title=username)
@@ -43,6 +44,8 @@ def add_review(game_id):
         db.session.commit()
         return json.dumps(new_review.to_dict())
     else:
+         print("DID NOT VALIDATE_______________________________")
+
          return form.errors
 @review_routes.route('/<int:review>', methods=["PUT"])
 @login_required
