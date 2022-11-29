@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { retrieveCart, removeFromCart, checkoutCart } from "../../store/cart";
 import { useHistory } from "react-router-dom";
+import { authenticate } from "../../store/session";
 function CartPage() {
     const dispatch = useDispatch();
     const history= useHistory();
@@ -19,6 +20,7 @@ function CartPage() {
 
     function buyAll(){
         dispatch(checkoutCart())
+        dispatch(authenticate())
         history.push('/library')
     }
 

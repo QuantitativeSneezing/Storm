@@ -1,3 +1,5 @@
+import ReviewForm from "../reviewCreate";
+
 function ReviewList(props) {
     const { reviews, owned } = props
     // console.log("REVIEWS IN REVIEWLIST :", reviews)
@@ -5,7 +7,7 @@ function ReviewList(props) {
     return (
         <div className="reviews-container">
             {owned &&
-            <div>(REVIEW FORM WILL GO HERE LOL, THIS GAME IS OWNED BY THE USER)</div>
+            <ReviewForm />
             }
             {reviews.map((review) =>
                 <div className="individual-review" key={review.id}>

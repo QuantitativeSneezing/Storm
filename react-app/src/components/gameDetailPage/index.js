@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getOneGame } from "../../store/game";
 import ReviewList from "../reviewList"
 import { addToCart, retrieveCart } from "../../store/cart";
+import { authenticate } from "../../store/session";
 function GameDetailPage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -11,6 +12,7 @@ function GameDetailPage() {
 
     useEffect(() => {
         dispatch(retrieveCart())
+        dispatch(authenticate())
         dispatch(getOneGame(gameId))
     }, [dispatch, gameId])
 
@@ -20,7 +22,7 @@ function GameDetailPage() {
     const user = useSelector(state => state.session.user)
     let notInCartAlready;
     let ownedByUser = false;
-    // console.log("USE SELECTORS :",user, cart)
+    console.log("USE SELECTORS :",user, cart)
 
     let currentGame;
     if (stateGames) {
@@ -44,9 +46,10 @@ function GameDetailPage() {
 
     console.log("GAME IN GAME DETAILS", currentGame)
     function addGameToCart() {
-        console.log("GAME TO BE ADDED :", currentGame)
+        // console.log("GAME TO BE ADDED :", currentGame)
         dispatch(addToCart(currentGame.id))
-        history.push('/')
+        dispatch(authenticate())
+        history.push('/cart')
     }
 
     function alreadyInCart() {

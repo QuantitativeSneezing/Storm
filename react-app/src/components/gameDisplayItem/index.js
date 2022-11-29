@@ -1,10 +1,12 @@
 import "./gameDisplay.css"
 import { useHistory } from "react-router-dom"
-function GameDisplayItem(game) {
+function GameDisplayItem(props) {
     const history = useHistory()
-    game = game.game
+    const {game, inLibrary}= props
     function storePageRedirect() {
-        history.push(`/app/${game.id}`)
+        if(inLibrary){
+            history.push(`/app/${game.id}`)
+        }
     }
     console.log("game from display item :", game)
     const splashPhoto = game.images[0].url
