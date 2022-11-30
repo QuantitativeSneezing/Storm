@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getOneGame } from "../../store/game";
 import ReviewList from "../reviewList"
 import { addToCart, retrieveCart } from "../../store/cart";
+import { authenticate } from "../../store/session";
 function GameDetailPage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -11,6 +12,7 @@ function GameDetailPage() {
 
     useEffect(() => {
         dispatch(retrieveCart())
+        dispatch(authenticate())
         dispatch(getOneGame(gameId))
     }, [dispatch, gameId])
 
@@ -44,9 +46,13 @@ function GameDetailPage() {
 
     console.log("GAME IN GAME DETAILS", currentGame)
     function addGameToCart() {
-        console.log("GAME TO BE ADDED :", currentGame)
-        dispatch(addToCart(currentGame.id))
-        history.push('/')
+        console.log("GAME TO BE ADDED :", currentGame.id)
+        dispatch(addToCart(currentGame.id)).then(
+            dispatch(authenticate())
+        )
+            .then(
+                history.push('/cart')
+            )
     }
 
     function alreadyInCart() {

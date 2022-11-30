@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import HomePage from './components/HomePage';
 import GameDetailPage from './components/gameDetailPage';
 import CartPage from './components/cartPage';
+import Library from './components/library';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ function App() {
           <GameDetailPage />
         </Route>
         <ProtectedRoute path="/library" exact={true}>
-          <div>ADD LIBRARY COMPONENT HERE</div>
+          <Library />
         </ProtectedRoute>
         <ProtectedRoute path="/cart" exact={true}>
           <CartPage />
