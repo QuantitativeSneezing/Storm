@@ -22,7 +22,7 @@ function GameDetailPage() {
     const user = useSelector(state => state.session.user)
     let notInCartAlready;
     let ownedByUser = false;
-    console.log("USE SELECTORS :",user, cart)
+    // console.log("USE SELECTORS :",user, cart)
 
     let currentGame;
     if (stateGames) {
@@ -46,10 +46,13 @@ function GameDetailPage() {
 
     console.log("GAME IN GAME DETAILS", currentGame)
     function addGameToCart() {
-        // console.log("GAME TO BE ADDED :", currentGame)
-        dispatch(addToCart(currentGame.id))
-        dispatch(authenticate())
-        history.push('/')
+        console.log("GAME TO BE ADDED :", currentGame.id)
+        dispatch(addToCart(currentGame.id)).then(
+            dispatch(authenticate())
+        )
+            .then(
+                history.push('/cart')
+            )
     }
 
     function alreadyInCart() {

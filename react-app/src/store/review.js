@@ -78,12 +78,12 @@ export const addOneReview = (data) => async dispatch => {
 
 
 export const editOneReview = (payload) => async dispatch => {
-    const { reviewId, content } = payload;
+    const { reviewId, content, rating } = payload;
     // console.log("STUFF IN EDIT :",reviewId, content)
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ content, rating }),
     })
 
     if (response.ok) {

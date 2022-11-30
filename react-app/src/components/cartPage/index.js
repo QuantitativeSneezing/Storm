@@ -9,13 +9,14 @@ function CartPage() {
     const [retrieved, setRetrieved] = useState(false)
     useEffect(() => {
         dispatch(retrieveCart())
-        dispatch(authenticate())
-        setRetrieved(true)
+        dispatch(authenticate()).then(
+            setRetrieved(true)
+        )
     }, [dispatch])
 
     const cart = useSelector(state => state.cart.cart)
 
-    console.log("CART IN CART PAGE :", cart)
+    // console.log("CART IN CART PAGE :", cart)
 
     function removeCart(id) {
         dispatch(removeFromCart(id))
@@ -25,7 +26,7 @@ function CartPage() {
     function buyAll() {
         dispatch(checkoutCart())
         dispatch(authenticate())
-        history.push('/library')
+        history.push('/')
     }
 
     function returnToShopping() {

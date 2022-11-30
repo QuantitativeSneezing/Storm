@@ -1,0 +1,27 @@
+
+.recc-button{
+    background-color: rgb(72,100,120);
+    width:100px;
+    height: 50px;
+}
+
+.recc-button:hover{
+    background-color: rgb(88,146,183);
+}
+.review-recommend{
+    display: flex;
+    justify-content: space-between;
+}
+.review-submit{
+    background-color: rgb(72,100,120);
+    width:100px;
+    height: 50px;
+}
+.review-submit:hover{
+    background-color: rgb(88,146,183);
+    width:100px;
+    height: 50px;
+}
+.button-grouper{
+    display: flex;
+}

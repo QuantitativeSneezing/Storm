@@ -2,17 +2,20 @@ import { useState } from "react"
 import { addOneReview } from "../../store/review"
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import "./reviewCreate.css"
 function ReviewForm() {
-    const dispatch= useDispatch()
+    const dispatch = useDispatch()
     const [review, setReview] = useState("")
-    const [recommend, setRecommend] = useState(true)
+    const [recommend, setRecommend] = useState("")
     const gameId = useParams();
-    console.log("GAME ID IN REVIEW FORM :", gameId.gameId)
-    const forPayload = gameId.gameId
-    function submitReview(e) {
+    let recommended = recommend === "like"
+    let notRecommended = recommend === "dislike"
 
-        const payload = { content:review, rating:recommend, gameId: forPayload }
+    console.log("GAME ID IN REVIEW FORM :", gameId.gameId)
+    console.log("RECOMMEND STATUS :", recommended, notRecommended)
+    const forPayload = gameId.gameId
+    function submitReview() {
+        const payload = { content: review, rating: recommend === "like", gameId: forPayload }
         dispatch(addOneReview(payload))
     }
     return (
@@ -27,13 +30,19 @@ function ReviewForm() {
                     placeholder="TYPE YOUR REVIEW HERE"
                 />
                 <div className="review-recommend">
-                    <div className={recommend ? "recc-button-highlighted" : "recc-button"} onClick={() => setRecommend(true)}>
-                        I LIKE THIS GAME
+                    <div className="question">
+
+                        Do you recommend this game?
+                        <div className="button-grouper">
+                            <div className={"recc-button"} onClick={() => setRecommend("like")}>
+                                Yes
+                            </div>
+                            <div className={"recc-button"} onClick={() => setRecommend("dislike")}>
+                                No
+                            </div>
+                        </div>
                     </div>
-                    <div className={recommend ? "recc-button" : "recc-button-highlighted"} onClick={() => setRecommend(false)}>
-                        I DISLIKE THIS GAME
-                    </div>
-                    <div className="review-submit" onClick={submitReview}> SUBMIT YOUR REVIEW</div>
+                    <div className="review-submit" onClick={submitReview}> Post Review</div>
                 </div>
             </div>
         </div>
