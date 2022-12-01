@@ -1,0 +1,29 @@
+.login-button {
+    position: relative;
+    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: inherit;
+    text-align: center;
+    letter-spacing: .03em;
+    cursor: pointer;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container {
+    background-color: #181a21;
+    border-radius: 4px;
+    padding: 24px 32px px;
+    flex: 1;
+    min-width: 636px;
+    max-width: 450px;
+}
