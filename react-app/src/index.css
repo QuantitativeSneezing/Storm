@@ -2,4 +2,8 @@
 *{
     background-color: rgb(27,40,56);
     color: rgb(220,223,225);
+    font-family: Arial, Helvetica, sans-serif;
+}
+textarea{
+    resize: none;
 }
