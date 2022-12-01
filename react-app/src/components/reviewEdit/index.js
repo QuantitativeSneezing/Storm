@@ -5,8 +5,8 @@ import { editOneReview, getAllReviews, deleteOneReview } from "../../store/revie
 function ReviewEditForm() {
     const dispatch = useDispatch()
     const history= useHistory()
-    // const [review, setReview] = useState("")
-    // const [recommend, setRecommend] = useState("")
+    const [review, setReview] = useState("")
+    const [recommend, setRecommend] = useState("")
     const { reviewId } = useParams();
 
     useEffect(() => {
@@ -25,8 +25,8 @@ function ReviewEditForm() {
 
 
 
-    const [review, setReview] = useState(oldReview.review)
-    const [recommend, setRecommend] = useState(oldReview.recommend)
+    // const [review, setReview] = useState(oldReview.review)
+    // const [recommend, setRecommend] = useState(oldReview.recommend)
     // if (reviews)
     function editReview() {
         const payload = { content: review, rating: recommend, reviewId: reviewId }
