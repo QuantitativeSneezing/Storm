@@ -12,6 +12,7 @@ import HomePage from './components/HomePage';
 import GameDetailPage from './components/gameDetailPage';
 import CartPage from './components/cartPage';
 import Library from './components/library';
+import ReviewEditForm from './components/reviewEdit';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -54,6 +55,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/cart" exact={true}>
           <CartPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/cart/:gameId" exact={true}>
+          <CartPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/reviews/:reviewId" exact={true}>
+          <ReviewEditForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

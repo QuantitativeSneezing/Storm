@@ -44,7 +44,7 @@ export const addToCart = (id) => async dispatch=>{
     })
     if (response.ok) {
         const newCartGame = await response.json();
-        const done = dispatch(addToCart(newCartGame))
+        const done = dispatch(addCart(newCartGame))
         return done
     }
 }

@@ -47,7 +47,7 @@ def add_review(game_id):
          print("DID NOT VALIDATE_______________________________")
 
          return form.errors
-@review_routes.route('/<int:review>', methods=["PUT"])
+@review_routes.route('/<int:review_id>', methods=["PUT"])
 @login_required
 def edit_review(review_id):
     form = ReviewForm()
@@ -64,7 +64,7 @@ def edit_review(review_id):
             return json.dumps(review.to_dict())
     else:
          return form.errors
-@review_routes.route('/<int:review>', methods=["DELETE"])
+@review_routes.route('/<int:review_id>', methods=["DELETE"])
 @login_required
 def delete_review(review_id):
     # sender_id = current_user.id

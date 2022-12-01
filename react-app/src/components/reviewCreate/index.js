@@ -2,6 +2,7 @@ import { useState } from "react"
 import { addOneReview } from "../../store/review"
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { getOneGame } from "../../store/game";
 import "./reviewCreate.css"
 function ReviewForm() {
     const dispatch = useDispatch()
@@ -17,23 +18,28 @@ function ReviewForm() {
     function submitReview() {
         const payload = { content: review, rating: recommend === "like", gameId: forPayload }
         dispatch(addOneReview(payload))
+        dispatch(getOneGame(forPayload))
     }
     return (
 
         <div> SUBMIT YOUR REVIEW HERE!!!!
             <div className="review-input-container">
                 <label> YOUR REVIEW</label>
-                <input className="review-text"
-                    type="text"
-                    value={review}
-                    onChange={(e) => setReview(e.target.value)}
-                    placeholder="TYPE YOUR REVIEW HERE"
-                />
+                <label>
+                    <textarea
+                        className="inputFieldLarge"
+                        type="text"
+                        value={review}
+                        onChange={(e) => setReview(e.target.value)}
+                        required
+                    />
+                </label>
                 <div className="review-recommend">
                     <div className="question">
 
                         Do you recommend this game?
                         <div className="button-grouper">
+
                             <div className={"recc-button"} onClick={() => setRecommend("like")}>
                                 Yes
                             </div>

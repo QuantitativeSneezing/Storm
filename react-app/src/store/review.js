@@ -61,7 +61,8 @@ export const getAllReviews = () => async dispatch => {
 
 export const addOneReview = (data) => async dispatch => {
     const { content, rating, gameId } = data
-    console.log("CONTENT IN ADD ONE", data)
+    console.log("CONTENT IN ADD ONE", data, gameId)
+    console.log ("ROUTE :", `/api/reviews/${gameId}`)
     const response = await fetch(`/api/reviews/${gameId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

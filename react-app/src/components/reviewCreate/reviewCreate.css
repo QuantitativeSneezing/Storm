@@ -25,3 +25,12 @@
 .button-grouper{
     display: flex;
 }
+.inputFieldLarge{
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 9px;
+    padding-top: 5px;
+    overflow: hidden;
+    width: 380px;
+    height:90px;
+}
