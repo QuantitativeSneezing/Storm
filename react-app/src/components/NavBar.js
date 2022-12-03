@@ -1,51 +1,91 @@
 
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector } from 'react-redux';
+
+
+import "./navbar.css"
 const NavBar = () => {
-  const currentUser= useSelector(state=>state.session.user)
+  const history = useHistory()
+  // const [loginDropDown, setLoginDropDown] = useState(false)
+  const [userDropdown, setUserDropdown] = useState(false)
+  // console.log("DROPDOWN STATUS L", userDropdown)
+  const currentUser = useSelector(state => state.session.user)
+  function loginRedirect() {
+    history.push('/login')
+  }
+  function storeRedirect() {
+    history.push('/')
+  }
+  function redirectToLinkedIn() {
+    window.location.assign("https://www.linkedin.com/in/jason-arnold-539005183/")
+  }
+  function redirectToGithub() {
+    window.location.assign("https://github.com/QuantitativeSneezing")
+  }
   return (
-    // <div className='navbar-outer'>
-    <nav>
-      <div>
-        <div>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
+    <div className='navbar-outer'>
+      <div className='navbar-group'>
+        <div className='header' onClick={storeRedirect}>
+          Store
         </div>
-        <div>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
+        <div className='header' onClick={redirectToGithub}>
+          Jason's Github
         </div>
-        <div>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
+        <div className='header' onClick={redirectToLinkedIn}>
+          Jason's LinkedIn
         </div>
-        {/* <div>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </div> */}
-        <div>
-          <NavLink to='/cart' exact={true} activeClassName='active'>
-            CART
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to='/library' exact={true} activeClassName='active'>
-            LIBRARY
-          </NavLink>
-        </div>
-        <div>
-          <LogoutButton />
-        </div>
+
       </div>
-    </nav>
-    // {currentUser && currentUser.name}
-    // </div>
+      {currentUser && (
+        <div className='user-container-area'
+          onMouseEnter={() => setUserDropdown(true)}
+          onMouseLeave={() => setUserDropdown(false)}>
+          <div className='menu-button'> {currentUser.username}</div>
+          <div>
+
+          </div>
+          {userDropdown && (
+            <div className='hovering'>
+              <div>
+                <NavLink to='/' exact={true} activeClassName="menu-button" className="menu-button">
+                  Home
+                </NavLink>
+              </div>
+
+              <div>
+                <NavLink to='/cart' exact={true} activeClassName="menu-button" className="menu-button">
+                  Cart
+                </NavLink>
+              </div>
+              <div>
+                <NavLink to='/library' exact={true} activeClassName="menu-button" className="menu-button">
+                  Library
+                </NavLink>
+              </div>
+
+              <div>
+                <LogoutButton />
+              </div>
+            </div>)}
+        </div>
+
+
+      )}
+      {!currentUser && (
+        <div className='userless-container-area'
+          onMouseEnter={() => setUserDropdown(true)}
+          onMouseLeave={() => setUserDropdown(false)}>
+          <div className='menu-button' onClick={loginRedirect}>Login</div>
+          <div>
+            <NavLink to='/sign-up' exact={true} activeClassName="menu-button" className="menu-button">
+              Sign Up
+            </NavLink>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 

@@ -1,4 +1,51 @@
-.navbar-outer{
+.navbar-outer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 2%;
+    margin-bottom: 7%;
+}
+
+.menu-button {
+    color: rgb(137, 113, 133);
+}
+
+.menu-button:hover {
+    cursor: pointer;
+    color: rgb(220, 223, 225);
+    /* z-index: 1000; */
+}
+.navbar-group{
+    display: flex;
+    justify-content: space-between;
+    gap: 20%;
+}
+.header {
+    color: rgb(137, 113, 133);
+}
+.header:hover{
+    cursor: pointer;
+    color: rgb(220, 223, 225);
+}
+.user-container-area{
+    /* z-index: 1000; */
+    position: absolute;
+    left:80%;
+
+
+}
+
+.user-container-area:hover{
+    /* z-index: 1000; */
+    width: 15%;
+    border: 1px solid #171a21;
+    background-color: #171a21;
+}
+.userless-container-area{
+    /* z-index: 1000; */
+    position: absolute;
+    left:80%;
+
+
 }

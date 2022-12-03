@@ -31,7 +31,7 @@ function ReviewEditForm() {
     function editReview() {
         const payload = { content: review, rating: recommend, reviewId: reviewId }
         dispatch(editOneReview(payload))
-        history.push()
+        history.push(`/app/${oldReview.game_id}`)
     }
     function deleteReview() {
         dispatch(deleteOneReview(reviewId))

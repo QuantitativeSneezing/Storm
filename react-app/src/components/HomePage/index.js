@@ -15,10 +15,12 @@ function HomePage() {
         }
         setGamesLoaded(true)
     }, [dispatch])
-    console.log("HOMEPAGE GAMES :", games)
+    // console.log("HOMEPAGE GAMES :", games)
     return (
         <div className="home-page">
-            <div> HELLO THIS IS THE HOMEPAGE</div>
+            <div className="store-header">
+
+            </div>
             {
                 gamesLoaded &&
                 <GamesBox games = {games} owned={false}/>

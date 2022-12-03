@@ -3,21 +3,21 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./reviewList.css"
 function ReviewList(props) {
-    const history= useHistory()
+    const history = useHistory()
     const { reviews, owned } = props
     // console.log("REVIEWS IN REVIEWLIST :", reviews)
     const sessionUser = useSelector(state => state.session.user);
     let userHasReview = false;
     console.log("SESSION USER :", sessionUser)
     for (let i = 0; i < reviews.length; i++) {
-        if(sessionUser){
+        if (sessionUser) {
             if (reviews[i].title === sessionUser.username) {
                 console.log("REVIEW IN REVIEW PAGE", reviews[i])
                 userHasReview = reviews[i].id;
             }
         }
     }
-    function redirectToReview(id){
+    function redirectToReview(id) {
         history.push(`/reviews/${id}`)
     }
     return (
@@ -26,7 +26,9 @@ function ReviewList(props) {
                 <ReviewForm />
             }
             {userHasReview &&
-                <div onClick={()=>redirectToReview(userHasReview)}> manage your review? </div>
+                <div className="big-button">
+                    <div onClick={() => redirectToReview(userHasReview)} className="menu-button"> manage your review? </div>
+                </div>
             }
             {reviews.map((review) =>
                 <div className="individual-review" key={review.id}>

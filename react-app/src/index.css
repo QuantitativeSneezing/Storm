@@ -3,6 +3,7 @@
     background-color: rgb(27,40,56);
     color: rgb(220,223,225);
     font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
 }
 textarea{
     resize: none;
