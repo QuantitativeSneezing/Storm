@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { retrieveCart, removeFromCart, checkoutCart } from "../../store/cart";
 import { useHistory } from "react-router-dom";
 import { authenticate } from "../../store/session";
+import "./cartPage.css"
 function CartPage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -25,7 +26,8 @@ function CartPage() {
 
     function buyAll() {
         dispatch(checkoutCart())
-        dispatch(authenticate())
+
+            2(authenticate())
         history.push('/')
     }
 
@@ -36,7 +38,6 @@ function CartPage() {
         <>
             {retrieved &&
                 <div className="cart-page">
-                    THIS IS THE CART AREA LOL
                     <div className="cart-items">
                         {cart && cart.map((game) =>
                             <div className="cart-item-area">{game.title}
@@ -47,7 +48,7 @@ function CartPage() {
                         )}
                     </div>
                     <div className="checkout" onClick={buyAll}>
-                        BUY THESE GAMES????
+                        Checkout
                     </div>
                     <div className="return-to-store" onClick={returnToShopping}>
                         CONTINUE SHOPPING?????

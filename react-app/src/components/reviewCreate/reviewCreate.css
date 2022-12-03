@@ -1,36 +1,56 @@
-
-.recc-button{
-    background-color: rgb(72,100,120);
-    width:100px;
+.recc-button {
+    background-color: rgb(72, 100, 120);
+    width: 100px;
     height: 50px;
+    color: rgb(137, 113, 133);
+    border-radius: 4px;
+
 }
 
-.recc-button:hover{
-    background-color: rgb(88,146,183);
+.recc-button-highlighted {
+    background-color: rgb(88, 147, 183);
+    width: 100px;
+    height: 50px;
+    color: rgb(220, 223, 225);
+    border-radius: 4px;
+
 }
-.review-recommend{
+
+.recc-button:hover {
+    cursor: pointer;
+    background-color: rgb(88, 146, 183);
+    color: rgb(220, 223, 225);
+}
+
+.review-recommend {
     display: flex;
     justify-content: space-between;
 }
-.review-submit{
-    background-color: rgb(72,100,120);
-    width:100px;
+
+.review-submit {
+    background-color: rgb(72, 100, 120);
+    width: 100px;
     height: 50px;
 }
-.review-submit:hover{
-    background-color: rgb(88,146,183);
-    width:100px;
+
+.review-submit:hover {
+    cursor: pointer;
+    background-color: rgb(88, 146, 183);
+    width: 100px;
     height: 50px;
+    color: rgb(220, 223, 225);
 }
-.button-grouper{
+
+.button-grouper {
     display: flex;
 }
-.inputFieldLarge{
+
+.inputFieldLarge {
     padding: 20px;
     border: 1px solid lightgray;
     border-radius: 9px;
     padding-top: 5px;
     overflow: hidden;
     width: 380px;
-    height:90px;
+    height: 90px;
 }

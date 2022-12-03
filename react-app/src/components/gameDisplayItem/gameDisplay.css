@@ -9,6 +9,7 @@
 
 }
 .game-store-picture:hover{
+    cursor: pointer;
     flex-grow: 1;
     transform: scale(1.05);
 

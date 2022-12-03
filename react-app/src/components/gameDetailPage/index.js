@@ -49,7 +49,7 @@ function GameDetailPage() {
         console.log("GAME TO BE ADDED :", currentGame.id)
         dispatch(addToCart(currentGame.id))
         dispatch(authenticate())
-        history.push('/cart')
+        history.push('/')
 
     }
 
@@ -59,7 +59,6 @@ function GameDetailPage() {
 
     return (
         <div className="game-detail-container">
-
             {
                 currentGame && (
                     <div className="game-main-container">

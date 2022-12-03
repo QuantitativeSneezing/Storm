@@ -1,5 +1,6 @@
 .game-box{
     display: grid;
+    z-index: 0;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .game-map{

@@ -39,10 +39,15 @@ function ReviewForm() {
 
                         Do you recommend this game?
                         <div className="button-grouper">
-
-                            <div className={"recc-button"} onClick={() => setRecommend("like")}>
-                                Yes
-                            </div>
+                            {!recommended && (
+                                <div className={"recc-button"} onClick={() => setRecommend("like")}>
+                                    Yes
+                                </div>
+                            )
+                            }
+                            {recommended && (
+                                <div className={"recc-button-highlighted"}> Yes </div>
+                            )}
                             <div className={"recc-button"} onClick={() => setRecommend("dislike")}>
                                 No
                             </div>
