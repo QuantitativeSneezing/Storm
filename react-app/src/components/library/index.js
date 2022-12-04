@@ -10,8 +10,11 @@ function Library() {
         setGamesLoaded(true)
     }, [dispatch])
     const games = useSelector(state => state.games.games)
+    const user= useSelector(state=> state.session.user)
     console.log(games)
     return (
+        <div className="library-container">
+        <div className="game-title">{user.username}'s Library</div>
         <div className="game-box">
             {gamesLoaded && games &&
                 games.map((game) =>
@@ -19,6 +22,7 @@ function Library() {
                         <GameDisplayItem game={game} owned={true}></GameDisplayItem>
                     </div>
                 )}
+        </div>
         </div>
     )
 }

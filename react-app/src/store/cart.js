@@ -43,8 +43,9 @@ export const addToCart = (id) => async dispatch=>{
         body: JSON.stringify({id}),
     })
     if (response.ok) {
-        const newCartGame = await response.json();
-        const done = dispatch(addCart(newCartGame))
+        const newCartUser = await response.json();
+        console.log("new game in cart", newCartUser)
+        const done = dispatch(addCart(newCartUser))
         return done
     }
 }
@@ -84,21 +85,8 @@ const cartReducer = (state = {}, action) => {
             // return {...state}
             return { ...state, ...newState, cart: [...action.games.cart] };
         case ADD_CART:
-            // First case should technically never happen but I like these to be consistent
-            if (!state[action.game.id]) {
-                newState = {
-                    ...state,
-                    [action.game.id]: action.game
-                };
-                const gameList = newState.cart.map(id => newState[id]);
-                gameList.push(action.game);
-                newState.cart = gameList;
-
-                return newState;
-            }
-            return {
-                ...state,
-            };
+            newState= {...state, cart:action.cart}
+            return newState
         case CHECKOUT:
             const emptyCart= []
             newState = { ...state, cart: emptyCart }

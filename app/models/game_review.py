@@ -24,7 +24,9 @@ class GameReview(db.Model):
             "title": self.title,
             "content": self.content,
             "rating": self.rating,
-            "game_id": self.game_id
+            "game_id": self.game_id,
+            "game_name":self.game_r.to_dict()["title"],
+            "game_image":self.game_r.to_dict_images()["images"][0]
         }
         return game_review_dict
 

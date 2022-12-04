@@ -52,8 +52,8 @@ export const getAllReviews = () => async dispatch => {
         const reviews = await response.json();
         console.log("THUNK REVIEWS :", reviews)
         const result = dispatch(loadAll(reviews.reviews))
-        //console.log("RESULT OF DISPATCHING :", result)
-        return result
+        console.log("RESULT OF DISPATCHING :", reviews)
+        return reviews
     }
 };
 

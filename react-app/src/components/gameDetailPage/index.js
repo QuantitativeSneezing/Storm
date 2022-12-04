@@ -5,6 +5,7 @@ import { getOneGame } from "../../store/game";
 import ReviewList from "../reviewList"
 import { addToCart, retrieveCart } from "../../store/cart";
 import { authenticate } from "../../store/session";
+import "./gameDetailPage.css"
 function GameDetailPage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -48,8 +49,11 @@ function GameDetailPage() {
     function addGameToCart() {
         console.log("GAME TO BE ADDED :", currentGame.id)
         dispatch(addToCart(currentGame.id))
-        dispatch(authenticate())
-        history.push('/')
+        // dispatch(authenticate())
+        // dispatch(getOneGame(gameId))
+        // dispatch(retrieveCart())
+
+        // history.push('/')
 
     }
 
@@ -65,19 +69,20 @@ function GameDetailPage() {
                         <div className="game-title">{currentGame.title}</div>
                         <div className="game-images-container">
                             <img src={currentGame.images[0].url} alt="I lifted these all from steam lol"></img>
+                            {currentGame.description}
                         </div>
                         <div className="game-price">{currentGame.price}</div>
                         {user && notInCartAlready && !ownedByUser &&
-                            <div className="cart-button" onClick={addGameToCart}>ADD TO CART?</div>
+                            <div className="buy-item-container">
+                                <div className="game-buy-title">Buy {currentGame.title} </div>
+                                <span className="cart-button" onClick={addGameToCart}>Add to Cart</span>
+                            </div>
                         }
                         {user && !notInCartAlready && !ownedByUser &&
-                            <div className="cart-button" onClick={alreadyInCart}>THIS GAME IS ALREADY IN YOUR CART, GO TO CART?</div>
+                            <div className="cart-button" onClick={alreadyInCart}>In Cart</div>
                         }
                         <div className="game-review-area">
-                            <div>
-                                REVIEWS FOR THIS GAME:
-                            </div>
-                            <ReviewList reviews={currentGame.reviews} owned={ownedByUser} />
+                            <ReviewList reviews={currentGame.reviews} owned={ownedByUser} game={currentGame} />
                         </div>
                     </div>
                 )

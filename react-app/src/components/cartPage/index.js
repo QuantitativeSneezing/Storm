@@ -16,18 +16,21 @@ function CartPage() {
     }, [dispatch])
 
     const cart = useSelector(state => state.cart.cart)
-
+    let enableCart;
+    if (cart&& cart.length) {
+        enableCart=true
+    }
     // console.log("CART IN CART PAGE :", cart)
 
     function removeCart(id) {
         dispatch(removeFromCart(id))
-
+        dispatch(authenticate())
     }
 
     function buyAll() {
         dispatch(checkoutCart())
 
-            2(authenticate())
+        dispatch(authenticate())
         history.push('/')
     }
 
@@ -42,16 +45,18 @@ function CartPage() {
                         {cart && cart.map((game) =>
                             <div className="cart-item-area">{game.title}
                                 <span className="cart-item-buttons">
-                                    <button onClick={() => removeCart(game.id)}> REMOVE FROM CART?</button>
+                                    <button onClick={() => removeCart(game.id)}> Remove </button>
                                 </span>
                             </div>
                         )}
                     </div>
-                    <div className="checkout" onClick={buyAll}>
+                    {enableCart &&
+                    <div className="cart-button" onClick={buyAll}>
                         Checkout
                     </div>
-                    <div className="return-to-store" onClick={returnToShopping}>
-                        CONTINUE SHOPPING?????
+                    }
+                    <div className="cart-button" onClick={returnToShopping}>
+                        Continue Shopping
                     </div>
                 </div>
             }
