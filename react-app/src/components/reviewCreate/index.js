@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getOneGame } from "../../store/game";
 import "./reviewCreate.css"
-function ReviewForm() {
+function ReviewForm({ game }) {
     const dispatch = useDispatch()
     const [review, setReview] = useState("")
     const [recommend, setRecommend] = useState("")
@@ -12,8 +12,9 @@ function ReviewForm() {
     let recommended = recommend === "like"
     let notRecommended = recommend === "dislike"
 
-    console.log("GAME ID IN REVIEW FORM :", gameId.gameId)
-    console.log("RECOMMEND STATUS :", recommended, notRecommended)
+    // console.log("GAME ID IN REVIEW FORM :", gameId.gameId)
+    // console.log("RECOMMEND STATUS :", recommended, notRecommended)
+    console.log("game in review form :", game)
     const forPayload = gameId.gameId
     function submitReview() {
         const payload = { content: review, rating: recommend === "like", gameId: forPayload }
@@ -22,9 +23,10 @@ function ReviewForm() {
     }
     return (
 
-        <div> SUBMIT YOUR REVIEW HERE!!!!
+
+        <div className="review-create-box">
+            <div className="owned-title">Write a Review for {game.title}</div>
             <div className="review-input-container">
-                <label> YOUR REVIEW</label>
                 <label>
                     <textarea
                         className="inputFieldLarge"
@@ -32,8 +34,15 @@ function ReviewForm() {
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
                         required
+                        placeholder="Write your review here"
                     />
                 </label>
+                <div className="review-length-container">
+
+                    <span className="review-length-shower">
+                        {review.length}/255
+                    </span>
+                </div>
                 <div className="review-recommend">
                     <div className="question">
 
@@ -48,12 +57,22 @@ function ReviewForm() {
                             {recommended && (
                                 <div className={"recc-button-highlighted"}> Yes </div>
                             )}
-                            <div className={"recc-button"} onClick={() => setRecommend("dislike")}>
+                            {!notRecommended && (<div className={"recc-button"} onClick={() => setRecommend("dislike")}>
                                 No
-                            </div>
+                            </div>)}
+
+                            {notRecommended && (
+                                <div className={"recc-button-highlighted"}> No </div>
+                            )}
                         </div>
                     </div>
-                    <div className="review-submit" onClick={submitReview}> Post Review</div>
+                    {review && (recommended || notRecommended) && (review.length < 255) &&
+                        <div className="recc-button" onClick={submitReview}> Submit Review</div>
+                    }
+                    {(!review || (!recommended && !notRecommended) || (review.length > 255)) &&
+                        <div className="recc-button-disabled" >Submit Review</div>
+                    }
+
                 </div>
             </div>
         </div>

@@ -1,0 +1,33 @@
+#individual-review{
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    word-break: keep-all;
+    background-color: rgb(22,32,45);
+    justify-self: center;
+    margin: 12px;
+}
+.recc-container{
+    display: grid;
+    grid-template-columns: 20% 1fr 1fr;
+    padding-bottom:20px ;
+    border-bottom: 1px solid darkgray;
+    width: 100%;
+}
+.review-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20%;
+}
+.review-content{
+    margin: 15px;
+}
+.review-buttons{
+    display: flex;
+
+}

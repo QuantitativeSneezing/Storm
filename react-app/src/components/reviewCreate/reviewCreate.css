@@ -1,19 +1,39 @@
 .recc-button {
     background-color: rgb(72, 100, 120);
+    display: flex;
     width: 100px;
     height: 50px;
     color: rgb(137, 113, 133);
     border-radius: 4px;
-
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 5px;
 }
-
+.recc-button-disabled {
+    background-color: rgb(72, 100, 120);
+    display: flex;
+    width: 100px;
+    height: 50px;
+    color: rgb(137, 113, 133);
+    border-radius: 4px;
+    cursor: not-allowed;
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+}
 .recc-button-highlighted {
+    display: flex;
     background-color: rgb(88, 147, 183);
     width: 100px;
     height: 50px;
     color: rgb(220, 223, 225);
     border-radius: 4px;
-
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
 }
 
 .recc-button:hover {
@@ -46,11 +66,30 @@
 }
 
 .inputFieldLarge {
-    padding: 20px;
-    border: 1px solid lightgray;
-    border-radius: 9px;
-    padding-top: 5px;
-    overflow: hidden;
-    width: 380px;
-    height: 90px;
+    border: 1px solid #233c51;
+    border-radius: 3px;
+    height: 132px;
+    width: 764px;
+    max-width: 800px;
+    background-color: #222b35;
+    color: #d6d7d8;
+    padding: 10px 11px;
+    box-shadow: inset 0px 0px 7px rgb(0 0 0 / 50%);
+    resize: none;
+}
+.owned-title{
+    color: rgb(90,158,200);
+    font-weight: bold;
+    font-size: large;
+    /* background-color: hotpink; */
+}
+.review-create-box{
+    color :#4c5966 !important;
+    margin-top: 6%;
+    margin-bottom: 3%;
+}
+.review-create-box{
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    /* background-color: hotpink; */
 }
