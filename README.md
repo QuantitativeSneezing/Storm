@@ -31,3 +31,6 @@ Messages- the ability to send, update and delete direct messages to users who ar
 Search functionality- ability to search for games by keyword or by tags
 
 Wishlist- ability to wishlist games for easier future purchase
+
+
+<img src="https://imgur.com/m3cHklM">
