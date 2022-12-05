@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -10,6 +10,21 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const validationErrors = [];
+    if (!email.length) {
+        validationErrors.push("Email is required ")
+    // } else if (name.length > 50) {
+    //     errors.push("Name should be less than 50 characters")
+    // } else if (name.length < 3) {
+    //     errors.push("Name should be more than 2 characters")
+    // }
+
+    // if (topic.length > 50) {
+    //     errors.push("topic should be less than 50 characters")
+    }
+    setErrors(validationErrors);
+}, [email])
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -40,9 +55,9 @@ const LoginForm = () => {
     <div className='login-container'>
 
       <form className='login-form'>
-        <div>
+        <div className='errors'>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div className='error' key={ind}>{error}</div>
           ))}
         </div>
         <div>

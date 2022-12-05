@@ -27,3 +27,9 @@
     min-width: 636px;
     max-width: 450px;
 }
+.errors{
+    color: red;
+}
+.error{
+    color: red;
+}

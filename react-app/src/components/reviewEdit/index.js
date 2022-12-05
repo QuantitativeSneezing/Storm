@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { editOneReview, getAllReviews, deleteOneReview } from "../../store/review";
 import { getLibraryGames } from "../../store/game";
+import { authenticate } from "../../store/session";
 function ReviewEditForm() {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -20,12 +21,17 @@ function ReviewEditForm() {
     useEffect(() => {
         if (oldReview) {
             setReview(oldReview.content)
-            setRecommend(oldReview.rating)
+            //why did I implement it like this lol
+            if (oldReview.rating) {
+                setRecommend("like")
+            } else {
+                setRecommend("dislike")
+            }
         }
     }, [oldReview, reviews])
-    console.log("REVIEW ID :", reviewId, reviews)
+    // console.log("REVIEW ID :", reviewId, reviews)
     if (reviews) {
-        console.log("REVIEWS :", reviews)
+        // console.log("REVIEWS :", reviews)
         oldReview = reviews.find(review => +review.id === +reviewId)
         if (oldReview) {
         }
@@ -35,15 +41,13 @@ function ReviewEditForm() {
     let recommended = recommend === "like"
     let notRecommended = recommend === "dislike"
     // let currentGame;
-    if (oldReview) {
-
-    }
     // const [review, setReview] = useState(oldReview.review)
     // const [recommend, setRecommend] = useState(oldReview.recommend)
     // if (reviews)
     function editReview() {
         const payload = { content: review, rating: recommend, reviewId: reviewId }
         dispatch(editOneReview(payload))
+        dispatch(authenticate())
         history.push(`/app/${oldReview.game_id}`)
     }
     function deleteReview() {
@@ -56,6 +60,7 @@ function ReviewEditForm() {
     // if (!currentGame) {
     //     return null
     // }
+    console.log("RECOMMEND STATUS :", recommended, notRecommended)
     return (
         <div className="game-detail-container">
 
@@ -73,6 +78,12 @@ function ReviewEditForm() {
                             placeholder="Write your review here"
                         />
                     </label>
+                    <div className="review-length-container">
+
+                        <span className="review-length-shower">
+                            {review.length}/255
+                        </span>
+                    </div>
                     <div className="review-recommend">
                         <div className="question">
 

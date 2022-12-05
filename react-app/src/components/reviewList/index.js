@@ -38,6 +38,9 @@ function ReviewList(props) {
                 </div>
             }
             <div className="review-area">
+                {!reviews.length &&
+                    <div id="individual-review" >{game.title} does not currently have any reviews. </div>
+                }
                 {reviews.map((review) =>
                     <div id="individual-review" key={review.id}>
                         <div className="recc-container">

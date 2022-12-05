@@ -13,6 +13,7 @@ import GameDetailPage from './components/gameDetailPage';
 import CartPage from './components/cartPage';
 import Library from './components/library';
 import ReviewEditForm from './components/reviewEdit';
+import CartIntermediary from './components/cartIntermediary';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -62,6 +63,12 @@ function App() {
         <ProtectedRoute path="/reviews/:reviewId" exact={true}>
           <ReviewEditForm />
         </ProtectedRoute>
+        <ProtectedRoute  path="/done" exact={true}>
+          <CartIntermediary />
+        </ProtectedRoute>
+      <Route>
+        <div className='game-title'> Sorry, page not found :( </div>
+      </Route>
       </Switch>
     </BrowserRouter>
   );
