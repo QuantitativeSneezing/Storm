@@ -33,4 +33,4 @@ Search functionality- ability to search for games by keyword or by tags
 Wishlist- ability to wishlist games for easier future purchase
 
 
-<img src="https://imgur.com/m3cHklM">
+<img src="https://i.imgur.com/m3cHklM.png">
