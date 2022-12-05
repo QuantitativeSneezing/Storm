@@ -25,7 +25,7 @@ const SignUpForm = () => {
       validationErrors.push("Passwords must be at least 4 characters")
       setAllowSubmit(false)
     }
-    if (username.length>255){
+    if (username.length>12){
       validationErrors.push("username too long")
       setAllowSubmit(false)
       //this is really messy, I know- just had to make the case stuff it all into one condition to allow submitting
