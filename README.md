@@ -1,5 +1,7 @@
 Welcome to Storm, a project by Jason Arnold
-Storm is a steam inspired (fake) virtual video game storefront, complete with a rich set of features
+Storm is a steam inspired (fake) virtual video game storefront, complete with a rich set of features.
+Find detailed documentation on Storm within the wiki [here](https://github.com/QuantitativeSneezing/Storm/wiki) 
+and the [**Live site:**](https://storm-eoz3.onrender.com/)
 
 # Made with:
 [<img src="https://img.shields.io/badge/Javascript-FF0000?style=for-the-badge&logo=AbletonLive&logoColor=white">](https://www.javascript.com/)
