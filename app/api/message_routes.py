@@ -39,8 +39,8 @@ def edit_message(message_id):
         db.session.commit()
         return json.dumps(message.to_dict())
     else:
-        # return form.errors
-        return {"message": "Message successfully seleted", "status code": 302}, 302
+        return form.errors
+        # return {"message": "Message successfully seleted", "status code": 302}, 302
 
 
 @message_routes.route('/new/<int:friendship_id>', methods=["POST"])

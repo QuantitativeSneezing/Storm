@@ -8,12 +8,11 @@ function HomePage() {
     const dispatch = useDispatch();
     const [gamesLoaded, setGamesLoaded] = useState(false)
     const games = useSelector(state => state.games.games)
-    const user = useSelector(state => state.session.user)
     useEffect(() => {
         dispatch(getAllGames())
-        if (user) {
-            dispatch(authenticate())
-        }
+
+        dispatch(authenticate())
+
         setGamesLoaded(true)
     }, [dispatch])
     // console.log("HOMEPAGE GAMES :", games)

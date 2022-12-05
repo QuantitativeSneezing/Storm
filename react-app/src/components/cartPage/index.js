@@ -16,9 +16,10 @@ function CartPage() {
     }, [dispatch])
 
     const cart = useSelector(state => state.cart.cart)
+    const user = useSelector(state => state.session.user)
     let enableCart;
-    if (cart&& cart.length) {
-        enableCart=true
+    if (cart && cart.length) {
+        enableCart = true
     }
     // console.log("CART IN CART PAGE :", cart)
 
@@ -31,7 +32,7 @@ function CartPage() {
         dispatch(checkoutCart())
 
         dispatch(authenticate())
-        history.push('/')
+        history.push('/done')
     }
 
     function returnToShopping() {
@@ -41,21 +42,24 @@ function CartPage() {
         <>
             {retrieved &&
                 <div className="cart-page">
+                    <div className="game-title" style={{"margin-left": "18%"}}>{user.username}'s Cart </div>
+                    <div className="spacer" style={{"margin-bottom": "25px"}}></div>
                     <div className="cart-items">
                         {cart && cart.map((game) =>
                             <div className="cart-item-area">{game.title}
+                                <img src={game.images[0].url} alt="still from steam" className="small-image" onClick={()=>history.push(`/app/${game.id}`)}></img>
                                 <span className="cart-item-buttons">
-                                    <button onClick={() => removeCart(game.id)}> Remove </button>
+                                    <button onClick={() => removeCart(game.id)} className="small-button"> Remove </button>
                                 </span>
                             </div>
                         )}
                     </div>
                     {enableCart &&
-                    <div className="cart-button" onClick={buyAll}>
-                        Checkout
-                    </div>
+                        <div className="cart-button-checkout" onClick={buyAll}>
+                            Checkout
+                        </div>
                     }
-                    <div className="cart-button" onClick={returnToShopping}>
+                    <div className="cart-button-checkout" onClick={returnToShopping}>
                         Continue Shopping
                     </div>
                 </div>
