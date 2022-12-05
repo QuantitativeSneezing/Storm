@@ -1,12 +1,12 @@
 from app.models import db, Game, environment, SCHEMA
 def seed_games():
-    first = Game(title= "Fallout: New Vegas", description= "a post-nuclear role playing game",
+    first = Game(title= "Fallout: New Vegas", description= "Welcome to Vegas. New Vegas. Enjoy your stay!",
         price= 19.99
         )
-    second = Game(title= "Victoria 3", description= "Grand strategy economic simulator, brought to you by Paradox Interactive",
+    second = Game(title= "Victoria 3", description= "Paradox Development Studio invites you to build your ideal society in the tumult of the exciting and transformative 19th century. Balance the competing interests in your society and earn your place in the sun in Victoria 3, one of the most anticipated games in Paradox’s history.",
         price= 49.99
         )
-    third = Game(title= "Hitman 3", description= "Enter a world of assassination",
+    third = Game(title= "Hitman 3", description= "Death Awaits. Agent 47 returns in HITMAN 3, the dramatic conclusion to the World of Assassination trilogy.",
         price= 59.99
         )
     fourth = Game(title= "Darkest Dungeon",
