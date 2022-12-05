@@ -26,6 +26,8 @@
 }
 .review-content{
     margin: 15px;
+    width: 50%;
+    word-break: break-all;
 }
 .review-buttons{
     display: flex;
