@@ -17,16 +17,20 @@ const SignUpForm = () => {
     const validationErrors = [];
     const validEmail = email.indexOf("@")
     // console.log("VALID EMAIL????", validEmail)
-    if ((validEmail === -1 || validEmail === email.length - 1)) {
+    if ((validEmail === -1 || validEmail === email.length - 1|| email.length>255)) {
       validationErrors.push("Valid Email is required ")
       setAllowSubmit(false)
-    } else if (email.length && validEmail !== -1 && validEmail < email.length - 1) {
-      setAllowSubmit(true)
     }
-    if (password.length < 4 || (!password && repeatPassword.length < 4)) {
+    if (password.length < 4 || (!password && repeatPassword.length < 4)|| (password.length>255)) {
       validationErrors.push("Passwords must be at least 4 characters")
       setAllowSubmit(false)
-    } else if (password.length>3 && repeatPassword.length >3){
+    }
+    if (username.length>255){
+      validationErrors.push("username too long")
+      setAllowSubmit(false)
+      //this is really messy, I know- just had to make the case stuff it all into one condition to allow submitting
+    }
+    if (!validationErrors.length){
       setAllowSubmit(true)
     }
     setErrors(validationErrors);
