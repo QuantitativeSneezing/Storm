@@ -12,8 +12,9 @@ const LoginForm = () => {
 
   useEffect(() => {
     const validationErrors = [];
-    if (!email.length) {
-        validationErrors.push("Email is required ")
+    //was going to add front end validations, but for now this simply clears them when resuming typing
+    // if (!email.length) {
+    //     validationErrors.push("Email is required ")
     // } else if (name.length > 50) {
     //     errors.push("Name should be less than 50 characters")
     // } else if (name.length < 3) {
@@ -22,9 +23,9 @@ const LoginForm = () => {
 
     // if (topic.length > 50) {
     //     errors.push("topic should be less than 50 characters")
-    }
+    // }
     setErrors(validationErrors);
-}, [email])
+}, [email, password])
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));

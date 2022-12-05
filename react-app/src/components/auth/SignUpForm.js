@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -9,11 +9,27 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [allowSubmit, setAllowSubmit]= useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-
+  useEffect(() => {
+      const validationErrors = [];
+      const validEmail= email.indexOf("@")
+      // console.log("VALID EMAIL????", validEmail)
+      if (email.length && (validEmail===-1 || validEmail === email.length-1)) {
+          validationErrors.push("Valid Email is required ")
+          setAllowSubmit(false)
+      } else if (email.length && validEmail !== -1 && validEmail< email.length-1){
+        setAllowSubmit(true)
+      }
+      setErrors(validationErrors);
+  }, [email])
   const onSignUp = async (e) => {
+
     e.preventDefault();
+    if (password!== repeatPassword){
+      setErrors(["Passwords must match"])
+    }
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
@@ -44,9 +60,9 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div>
+      <div className='errors'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className='error' key={ind}>{error}</div>
         ))}
       </div>
       <div>
@@ -83,10 +99,14 @@ const SignUpForm = () => {
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      {allowSubmit &&
+      <button  type='submit'>Sign Up</button>
+      }
+       {!allowSubmit &&
+      <div >Please enter a valid email</div>
+      }
     </form>
   );
 };

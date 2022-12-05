@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import { authenticate } from './store/session';
+
 import HomePage from './components/HomePage';
 import GameDetailPage from './components/gameDetailPage';
 import CartPage from './components/cartPage';
@@ -15,19 +14,7 @@ import Library from './components/library';
 import ReviewEditForm from './components/reviewEdit';
 import CartIntermediary from './components/cartIntermediary';
 function App() {
-  const [loaded, setLoaded] = useState(false);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
-  }, [dispatch]);
-
-  if (!loaded) {
-    return null;
-  }
 
   return (
     <BrowserRouter>
@@ -63,12 +50,12 @@ function App() {
         <ProtectedRoute path="/reviews/:reviewId" exact={true}>
           <ReviewEditForm />
         </ProtectedRoute>
-        <ProtectedRoute  path="/done" exact={true}>
+        <ProtectedRoute path="/done" exact={true}>
           <CartIntermediary />
         </ProtectedRoute>
-      <Route>
-        <div className='game-title'> Sorry, page not found :( </div>
-      </Route>
+        <Route>
+          <div className='game-title'> Sorry, page not found :( </div>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
