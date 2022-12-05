@@ -71,7 +71,7 @@ function GameDetailPage() {
                             <img src={currentGame.images[0].url} alt="I lifted these all from steam lol"></img>
                             {currentGame.description}
                         </div>
-                        <div className="game-price">{currentGame.price}</div>
+                        {/* <div className="game-price">{currentGame.price}</div> */}
                         {user && notInCartAlready && !ownedByUser &&
                             <div className="buy-item-container">
                                 <div className="game-buy-title">Buy {currentGame.title} </div>
