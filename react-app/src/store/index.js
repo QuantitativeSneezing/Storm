@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
   session,
   games: gameReducer,
   cart : cartReducer,
-  message : messageReducer,
-  friend: friendReducer,
+  messages : messageReducer,
+  friends: friendReducer,
   review: reviewReducer,
 });
 

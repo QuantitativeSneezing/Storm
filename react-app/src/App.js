@@ -13,6 +13,7 @@ import CartPage from './components/cartPage';
 import Library from './components/library';
 import ReviewEditForm from './components/reviewEdit';
 import CartIntermediary from './components/cartIntermediary';
+import FriendsList from './components/friendsList';
 function App() {
 
 
@@ -53,8 +54,11 @@ function App() {
         <ProtectedRoute path="/done" exact={true}>
           <CartIntermediary />
         </ProtectedRoute>
+        <ProtectedRoute path="/friends">
+          <FriendsList />
+        </ProtectedRoute>
         <Route>
-          <div className='game-title'> Sorry, page not found :( </div>
+          <div className='game-title'> Sorry, page not found</div>
         </Route>
       </Switch>
     </BrowserRouter>

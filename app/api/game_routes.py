@@ -39,6 +39,8 @@ def cart_games():
     user_with_games = User.query.get(current_user.id)
     cart= user_with_games.to_dict_with_cart()["cart"]
     return json.dumps({"cart":cart})
+
+
 @game_routes.route('/library', methods=["POST"])
 @login_required
 def add_to_library():
@@ -47,6 +49,8 @@ def add_to_library():
     user_with_games.user_user_cart_item= []
     db.session.commit()
     return json.dumps(user_with_games.to_dict_with_games())
+
+
 @game_routes.route('/cart/<int:game_id>', methods=["POST"])
 @login_required
 def add_to_cart(game_id):

@@ -64,7 +64,11 @@ const NavBar = () => {
                   Library
                 </NavLink>
               </div>
-
+              <div>
+                <NavLink to='/friends' exact={true} activeClassName="menu-button" className="menu-button">
+                  Friends
+                </NavLink>
+              </div>
               <div>
                 <LogoutButton />
               </div>

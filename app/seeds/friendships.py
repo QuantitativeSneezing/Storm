@@ -3,20 +3,20 @@ from .users import demo, marnie, bobbie
 
 def seed_friendships():
     first = Friendship(
-    nicknameOne= "DEMO",
-    nicknameTwo= "marniepie",
+    nicknameOne= "1DEMO",
+    nicknameTwo= "2marniepie",
     friendship_friendship_friends= [demo,marnie]
         )
 
     second = Friendship(
-    nicknameOne= "DEMO",
-    nicknameTwo= "Bobbieboo",
+    nicknameOne= "1DEMO",
+    nicknameTwo= "3Bobbieboo",
     friendship_friendship_friends= [demo,bobbie]
 
         )
     third = Friendship(
-    nicknameOne= "Bobbieboo",
-    nicknameTwo= "marniepie",
+    nicknameOne= "3Bobbieboo",
+    nicknameTwo= "2marniepie",
     friendship_friendship_friends= [bobbie,marnie]
 
         )

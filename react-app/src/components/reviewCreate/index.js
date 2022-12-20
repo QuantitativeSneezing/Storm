@@ -39,7 +39,7 @@ function ReviewForm({ game }) {
                 </label>
                 <div className="review-length-container">
 
-                    <span className="review-length-shower">
+                    <span className="review-length-shower" style={review.length>255 ?{color:"red"} : {}}>
                         {review.length}/255
                     </span>
                 </div>
