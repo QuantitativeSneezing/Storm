@@ -25,9 +25,11 @@ def all_messages():
     # print("HIT--------------------------------------------------------------------------------------------")
     all_messages= Message.query.all()
     return json.dumps({"messages": [message.to_dict() for message in all_messages]})
-
+@message_routes.route('/<int:friendship_id>')
+def friendship_messages(friendship_id):
+    all_messages= Message.query.filter_by(friendship_id=friendship_id)
+    return json.dumps({"messages": [message.to_dict() for message in all_messages]})
 @message_routes.route('/edit/<int:message_id>', methods=["PUT"])
-
 @login_required
 def edit_message(message_id):
     form= MessageForm()

@@ -54,7 +54,10 @@ function App() {
         <ProtectedRoute path="/done" exact={true}>
           <CartIntermediary />
         </ProtectedRoute>
-        <ProtectedRoute path="/friends">
+        <ProtectedRoute path="/friends" exact={true}>
+          <FriendsList />
+        </ProtectedRoute>
+        <ProtectedRoute path="/messages/:friendshipId" exact={true}>
           <FriendsList />
         </ProtectedRoute>
         <Route>

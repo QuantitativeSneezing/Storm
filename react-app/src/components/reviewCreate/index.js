@@ -14,7 +14,7 @@ function ReviewForm({ game }) {
 
     // console.log("GAME ID IN REVIEW FORM :", gameId.gameId)
     // console.log("RECOMMEND STATUS :", recommended, notRecommended)
-    console.log("game in review form :", game)
+    // console.log("game in review form :", game)
     const forPayload = gameId.gameId
     function submitReview() {
         const payload = { content: review, rating: recommend === "like", gameId: forPayload }

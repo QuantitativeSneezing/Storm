@@ -56,7 +56,16 @@ export const getAllMessages = () => async dispatch => {
         return result
     }
 };
-
+export const getFriendMessages = (friendshipId) => async dispatch => {
+    const response = await fetch(`/api/messages/${friendshipId}`);
+    if (response.ok) {
+        const messages = await response.json();
+        console.log("THUNK MESSAGES :", messages)
+        const result = dispatch(loadAll(messages.messages))
+        //console.log("RESULT OF DISPATCHING :", result)
+        return result
+    }
+};
 
 
 export const addOneMessage = (data) => async dispatch => {
