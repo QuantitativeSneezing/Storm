@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getMyFriends } from "../../store/friend"
 import { authenticate } from "../../store/session"
 import FriendIndividual from "../friendIndividual"
+import "./friendsList.css"
 function FriendsList() {
     const dispatch = useDispatch()
     useEffect(() => {

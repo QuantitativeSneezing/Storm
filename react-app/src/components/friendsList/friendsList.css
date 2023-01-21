@@ -1,0 +1,12 @@
+.friend-item{
+    display: flex;
+    justify-content: center;
+}
+.friend-name{
+    color: hotpink;
+    font-size: 100px;
+    width: 20%;
+}
+.friend-name:hover{
+    cursor: pointer;
+}
