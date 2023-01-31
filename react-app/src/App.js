@@ -6,7 +6,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-
+import MessagePage from './components/messagePage';
 import HomePage from './components/HomePage';
 import GameDetailPage from './components/gameDetailPage';
 import CartPage from './components/cartPage';
@@ -58,7 +58,7 @@ function App() {
           <FriendsList />
         </ProtectedRoute>
         <ProtectedRoute path="/messages/:friendshipId" exact={true}>
-          <FriendsList />
+          <MessagePage />
         </ProtectedRoute>
         <Route>
           <div className='game-title'> Sorry, page not found</div>
