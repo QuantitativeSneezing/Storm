@@ -8,8 +8,11 @@ function FriendIndividual(props) {
     }
     return (
         <div className="friend-item">
-            <div className="friend-name" onClick={()=>messageRedirect(friendship.id)}>
-                {friendship.otherName.slice(1)}
+            <div className="friend-name">
+                {friendship.otherName.slice(1)}\
+            </div>
+            <div className="header" onClick={()=>messageRedirect(friendship.id)}>
+                message this user?
             </div>
         </div>
     )

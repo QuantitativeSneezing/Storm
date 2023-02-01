@@ -14,6 +14,7 @@ import Library from './components/library';
 import ReviewEditForm from './components/reviewEdit';
 import CartIntermediary from './components/cartIntermediary';
 import FriendsList from './components/friendsList';
+import AddFriendsList from './components/addFriendsPage';
 function App() {
 
 
@@ -56,6 +57,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/friends" exact={true}>
           <FriendsList />
+        </ProtectedRoute>
+        <ProtectedRoute path="/addfriends" exact={true}>
+          <AddFriendsList />
         </ProtectedRoute>
         <ProtectedRoute path="/messages/:friendshipId" exact={true}>
           <MessagePage />

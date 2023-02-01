@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 
 function MessageBox(friend) {
+    const [content, setContent] = useState("")
     return (
 
         <input className="dm-text-input"
@@ -11,4 +12,4 @@ function MessageBox(friend) {
         />
     )
 }
-export default MessageBox()
+export default MessageBox

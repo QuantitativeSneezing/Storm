@@ -1,11 +1,13 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 import { getMyFriends } from "../../store/friend"
 import { authenticate } from "../../store/session"
 import FriendIndividual from "../friendIndividual"
 import "./friendsList.css"
 function FriendsList() {
     const dispatch = useDispatch()
+    const history= useHistory()
     useEffect(() => {
         dispatch(getMyFriends())
         dispatch(authenticate())
@@ -31,7 +33,7 @@ function FriendsList() {
                         <FriendIndividual friendship={friend}></FriendIndividual>
                     </div>
                 )}
-            <div>
+            <div className="header" onClick={()=> history.push("/addfriends")}>
                 Add new friends?
             </div>
         </div>
