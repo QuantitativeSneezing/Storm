@@ -1,24 +1,25 @@
 from app.models import db, Message, environment, SCHEMA, User
 from .users import demo, marnie, bobbie
-
+from datetime import datetime
 def seed_messages():
     first = Message(
-    content= "HELLO FRIENDO"
-    nicknameTwo= "2marniepie",
-    message_message_friends= [demo,marnie]
-        )
+    content= "HELLO FRIENDO",
+    sender_id= 1,
+    friendship_id= 1,
+    created_at=datetime.now(),
+    )
 
     second = Message(
-    nicknameOne= "1DEMO",
-    nicknameTwo= "3Bobbieboo",
-    message_message_friends= [demo,bobbie]
-
+    content= "wazzup",
+    sender_id= 2,
+    friendship_id= 1,
+    created_at=datetime.now(),
         )
     third = Message(
-    nicknameOne= "3Bobbieboo",
-    nicknameTwo= "2marniepie",
-    message_message_friends= [bobbie,marnie]
-
+        content= "NICE TO SEE YA",
+        sender_id=1,
+        friendship_id= 2,
+        created_at=datetime.now(),
         )
 
 
@@ -39,6 +40,5 @@ def undo_messages():
         db.session.execute(f"TRUNCATE table {SCHEMA}.messages RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM messages")
-        db.session.execute("DELETE FROM message_friends")
 
     db.session.commit()

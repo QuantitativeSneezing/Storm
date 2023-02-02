@@ -61,12 +61,6 @@ function AddFriendsList() {
                         {user.username}
                     </div>
                 )}
-            {/* {friends &&
-                    friends.map((friend) =>
-                        <div className="friend-map" key={friend.id}>
-                            <FriendIndividual friendship={friend}></FriendIndividual>
-                        </div>
-                    )} */}
         </div>
     )
 }
