@@ -5,16 +5,22 @@ import { getFriendMessages } from "../../store/message"
 import messageBox from "../messageBox"
 function MessagePage() {
 
-    const dispatch= useDispatch()
-    const {friendshipId}= useParams()
+    const dispatch = useDispatch()
+    const { friendshipId } = useParams()
     useEffect(() => {
         dispatch(getFriendMessages(friendshipId))
+
     }, [])
-    const messages= useSelector(state=>state)
+    const messages = useSelector(state => state.messages.messages)
     console.log("MESSAGES IN BOX:", messages)
     return (
         <div>
-            THIS IS A BOX WHICH WILL CONTAIN MESSAGES
+            MESSAGE BOX GOES HERE
+            {messages && messages.map((message) =>
+                <div>
+                    {message.content}
+                </div>
+            )}
         </div>
     )
 }

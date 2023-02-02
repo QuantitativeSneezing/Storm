@@ -35,6 +35,15 @@ def current_friendships():
         if user in friendship["friends"]:
             to_return.append(friendship)
     return json.dumps({"friendships" :to_return})
+@friendship_routes.route('/<int:friendship_id>')
+@login_required
+def individual_friendship(friendship_id):
+    friendship = Friendship.query.get(friendship_id)
+    if friendship():
+        dicted= friendship.to_dict()
+        return json.dumps(dicted)
+    else:
+        return {"errors": "Channel couldn't be found"}, 404
 @friendship_routes.route('/new/<int:friend_id>', methods=["POST"])
 @login_required
 def add_friend(friend_id):
