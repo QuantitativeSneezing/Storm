@@ -50,8 +50,8 @@ def add_friend(friend_id):
     user = User.query.get(current_user.id)
     new_friend= User.query.get(friend_id)
     new_friendship= Friendship(
-        nicknameOne= user.username,
-        nicknameTwo= new_friend.username
+        nicknameOne= F"{current_user.id}{user.username}",
+        nicknameTwo= F"{friend_id}{new_friend.username}"
     )
     new_friendship.friendship_friendship_friends= [user, new_friend]
     db.session.add(new_friendship)

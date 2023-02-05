@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { authenticate } from "../../store/session"
-import { getMyFriends } from "../../store/friend"
+import { getMyFriends, newFriend } from "../../store/friend"
 // import FriendIndividual from "../friendIndividual"
 // import "./friendsList.css"
 function AddFriendsList() {
@@ -10,7 +10,6 @@ function AddFriendsList() {
     useEffect(() => {
         dispatch(authenticate())
         dispatch(getMyFriends())
-
     }, [])
     const friends = useSelector(state => state.friends.friendships)
     const notFriends = []
