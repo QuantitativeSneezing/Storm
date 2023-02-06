@@ -17,9 +17,9 @@ function FriendsList() {
     console.log("FRIENDS LIST FRIENDS", friends)
     if (friends) {
         for (let i = 0; i < friends.length; i++) {
-            if (+friends[i].nicknameOne[0] === user.id) {
+            if (+friends[i].nicknameOne[0] === user?.id) {
                 friends[i].otherName = friends[i].nicknameTwo
-            } else if (+friends[i].nicknameTwo[0] === user.id) {
+            } else if (+friends[i].nicknameTwo[0] === user?.id) {
                 friends[i].otherName = friends[i].nicknameOne
             }
         }

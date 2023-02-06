@@ -55,9 +55,9 @@ function App() {
         <ProtectedRoute path="/done" exact={true}>
           <CartIntermediary />
         </ProtectedRoute>
-        <ProtectedRoute path="/friends" exact={true}>
+        <Route path="/friends" exact={true}>
           <FriendsList />
-        </ProtectedRoute>
+        </Route>
         <ProtectedRoute path="/addfriends" exact={true}>
           <AddFriendsList />
         </ProtectedRoute>

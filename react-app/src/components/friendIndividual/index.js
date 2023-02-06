@@ -1,10 +1,18 @@
 import { useHistory } from "react-router-dom"
-import { updateFriend, deleteFriend } from "../../store/friend"
+import { useDispatch } from "react-redux"
+import { updateFriend, deleteFriend, getMyFriends } from "../../store/friend"
+import { authenticate } from "../../store/session"
 function FriendIndividual(props) {
     const { friendship } = props
+    const dispatch = useDispatch()
     const history = useHistory()
+    function deleteFriendship(id) {
+        dispatch(deleteFriend(id))
+        dispatch(getMyFriends())
+        // dispatch(authenticate)
+    }
     console.log("FRIEND in component", friendship)
-    function messageRedirect(friendshipId){
+    function messageRedirect(friendshipId) {
         history.push(`/messages/${friendshipId}`)
     }
     return (
@@ -12,13 +20,13 @@ function FriendIndividual(props) {
             <div className="friend-name">
                 {friendship.otherName.slice(1)}
             </div>
-            <div className="header" onClick={()=>messageRedirect(friendship.id)}>
+            <div className="header" onClick={() => messageRedirect(friendship.id)}>
                 message this user?
             </div>
-            <div className="header" onClick={()=>console.log("HELLO")}>
+            <div className="header" onClick={() => console.log("HELLO")}>
                 Change this user's nickname?
             </div>
-            <div className="header" onClick={()=>deleteFriend(friendship.id)}>
+            <div className="header" onClick={()=>deleteFriendship(friendship.id)}>
                 Unfriend this user?
             </div>
         </div>
