@@ -56,8 +56,9 @@ function AddFriendsList() {
             <div className='game-title'> Add Friends</div>
             {notFriends.length &&
                 notFriends.map((user) =>
-                    <div>
+                    <div className="header">
                         {user.username}
+                        <span onClick={()=>{dispatch(newFriend(user.id))}}>Add this user as a friend?</span>
                     </div>
                 )}
         </div>
