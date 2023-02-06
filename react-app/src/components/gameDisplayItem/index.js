@@ -2,9 +2,9 @@ import "./gameDisplay.css"
 import { useHistory } from "react-router-dom"
 function GameDisplayItem(props) {
     const history = useHistory()
-    const {game, inLibrary}= props
+    const { game, inLibrary } = props
     function storePageRedirect() {
-        if(!inLibrary){
+        if (!inLibrary) {
             history.push(`/app/${game.id}`)
         }
     }
@@ -13,9 +13,9 @@ function GameDisplayItem(props) {
     // console.log("splash :", splashPhoto)
     return (
         <div className="game-container" >
-            <img src={splashPhoto} className="game-store-picture" onClick={storePageRedirect} alt="lifted straight from steam hosting lol"></img>
-            <div className="game-price">
-                {/* {game.price}     */}
+            <div className="image-holder">
+
+                <img src={splashPhoto} className="game-store-picture" onClick={storePageRedirect} alt="lifted straight from steam hosting lol"></img>
             </div>
 
         </div>
