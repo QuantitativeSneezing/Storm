@@ -6,9 +6,9 @@ function FriendIndividual(props) {
     const { friendship } = props
     const dispatch = useDispatch()
     const history = useHistory()
-    function deleteFriendship(id) {
-        dispatch(deleteFriend(id))
-        dispatch(getMyFriends())
+    async function deleteFriendship(id) {
+       await dispatch(deleteFriend(id))
+       await dispatch(getMyFriends())
         // dispatch(authenticate)
     }
     console.log("FRIEND in component", friendship)

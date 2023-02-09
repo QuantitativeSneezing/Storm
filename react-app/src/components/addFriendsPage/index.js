@@ -55,9 +55,9 @@ function AddFriendsList() {
     console.log("DATA DUMP :", friends, users, friendIds)
     console.log("FRIEND IDS :", friendIds)
     console.log("NOT YOUR FRIENDS :", notFriends)
-    function addNewFriend(id) {
-        dispatch(newFriend(id))
-        dispatch(getMyFriends())
+    async function addNewFriend(id) {
+       await  dispatch(newFriend(id))
+       await dispatch(getMyFriends())
     }
 
     return (
