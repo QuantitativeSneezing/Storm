@@ -74,7 +74,8 @@ function GameDetailPage() {
                         {/* <div className="game-price">{currentGame.price}</div> */}
                         {user && notInCartAlready && !ownedByUser &&
                             <div className="buy-item-container">
-                                <div className="game-buy-title">Buy {currentGame.title} </div>
+                                <div className="game-buy-title">Buy {currentGame.title}  </div>
+                                <span className="game-buy-title">{currentGame.price}</span>
                                 <span className="cart-button" onClick={addGameToCart}>Add to Cart</span>
                             </div>
                         }

@@ -47,7 +47,7 @@ function AddFriendsList() {
     if (friends && users && friendIds) {
         for (let i = 0; i < users.length; i++) {
             console.log(users[i])
-            if (!friendIds.includes(users[i].id) && !(users[i].id === currentUser.id )){
+            if (!friendIds.includes(users[i].id) && !(users[i].id === currentUser.id)) {
                 notFriends.push(users[i])
             }
         }
@@ -63,12 +63,16 @@ function AddFriendsList() {
     return (
         <div className="friends-page">
             <div className='game-title'> Add Friends</div>
-            {notFriends.length &&
+            {notFriends &&
                 notFriends.map((user) =>
                     <div className="header" onClick={() => addNewFriend(user.id)}>
                         Add {user.username} as a friend?
                     </div>
                 )}
+            {!notFriends.length &&
+                <div className="game-title">
+                    No available users to friend
+                </div>}
         </div>
     )
 }
