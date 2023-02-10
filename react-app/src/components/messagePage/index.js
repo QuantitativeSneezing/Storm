@@ -15,7 +15,7 @@ function MessagePage() {
     const messages = useSelector(state => state.messages.messages)
     return (
         <div>
-            MESSAGE BOX GOES HERE
+            Your messages with friend
             {messages && messages.map((message) =>
                 <div>
                     {message.content}

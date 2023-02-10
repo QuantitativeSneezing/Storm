@@ -39,7 +39,7 @@ def current_friendships():
 @login_required
 def individual_friendship(friendship_id):
     friendship = Friendship.query.get(friendship_id)
-    if friendship():
+    if friendship:
         dicted= friendship.to_dict()
         return json.dumps(dicted)
     else:

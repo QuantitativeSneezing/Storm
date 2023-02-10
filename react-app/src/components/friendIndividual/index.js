@@ -23,9 +23,6 @@ function FriendIndividual(props) {
             <div className="header" onClick={() => messageRedirect(friendship.id)}>
                 message this user?
             </div>
-            <div className="header" onClick={() => console.log("HELLO")}>
-                Change this user's nickname?
-            </div>
             <div className="header" onClick={()=>deleteFriendship(friendship.id)}>
                 Unfriend this user?
             </div>
