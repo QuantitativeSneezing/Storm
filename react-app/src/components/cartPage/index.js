@@ -18,8 +18,10 @@ function CartPage() {
     const cart = useSelector(state => state.cart.cart)
     const user = useSelector(state => state.session.user)
     let enableCart;
+    let totalCost= 0
     if (cart && cart.length) {
         enableCart = true
+        // for (let i=0;)
     }
     // console.log("CART IN CART PAGE :", cart)
 
@@ -48,6 +50,7 @@ function CartPage() {
                         {cart && cart.map((game) =>
                             <div className="cart-item-area">{game.title}
                                 <img src={game.images[0].url} alt="still from steam" className="small-image" onClick={()=>history.push(`/app/${game.id}`)}></img>
+                                ${game.price}
                                 <span className="cart-item-buttons">
                                     <button onClick={() => removeCart(game.id)} className="small-button"> Remove </button>
                                 </span>
