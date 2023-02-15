@@ -29,6 +29,8 @@ class Friendship(db.Model):
     def to_dict(self):
         friendship_dict = {
             "id": self.id,
+            "nicknameOne" : self.nicknameOne,
+            "nicknameTwo" : self.nicknameTwo,
             "messages": [message.to_dict() for message in self.message_f],
         }
         return friendship_dict

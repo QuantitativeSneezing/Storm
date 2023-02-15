@@ -40,7 +40,7 @@ def current_friendships():
 def individual_friendship(friendship_id):
     friendship = Friendship.query.get(friendship_id)
     if friendship:
-        dicted= friendship.to_dict()
+        dicted= friendship.to_dict_with_users()
         return json.dumps(dicted)
     else:
         return {"errors": "Channel couldn't be found"}, 404

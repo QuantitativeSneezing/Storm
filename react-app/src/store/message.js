@@ -69,8 +69,9 @@ export const getFriendMessages = (friendshipId) => async dispatch => {
 
 
 export const addOneMessage = (data) => async dispatch => {
+    console.log ("HHHIIIIIIIIIITTTTTTTT")
     const { content, friendshipId } = data
-    // console.log('thunk!!!!!', name, img, description)
+    console.log('thunk!!!!!', friendshipId, content)
     const response = await fetch(`/api/messages/new/${friendshipId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
