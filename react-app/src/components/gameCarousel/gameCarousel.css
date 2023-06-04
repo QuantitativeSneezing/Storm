@@ -7,6 +7,5 @@
     justify-content: space-around;
 }
 .carousel-buttons{
-    display: flex;
-    justify-content: space-between  ;
+    display: inline-flex;
 }

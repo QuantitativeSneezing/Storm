@@ -33,8 +33,7 @@ function GameCarousel(games) {
             {/* {games && games[currentGameLocation].title} */}
             <img src={currentImage} className="game-carousel-picture" onClick={storePageRedirect} alt="lifted straight from steam hosting lol"></img>
             <div className="carousel-buttons">
-                <span className="menu-button" onClick={incrementLocation}> Next game</span>
-                <span className="menu-button" onClick={decrementLocation}> Prev game</spand>
+                <span className="cart-button" onClick={incrementLocation}> Next game</span> <span className="cart-button" onClick={decrementLocation}> Prev game</span>
             </div>
 
         </div >
