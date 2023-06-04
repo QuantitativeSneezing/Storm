@@ -2,6 +2,11 @@
     size: 50%;
 }
 .carousel{
-    align-self: center;
-    justify-self: center;
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+}
+.carousel-buttons{
+    display: flex;
+    justify-content: space-between  ;
 }
